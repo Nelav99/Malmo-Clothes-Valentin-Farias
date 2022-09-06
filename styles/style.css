@@ -81,7 +81,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 20px 8px;
-    background-color: #E3E6F3;
+    background-color: #E9CBBF;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
     z-index: 999;
     position: sticky;
@@ -125,7 +125,7 @@ img.logo {
 
 #navbar li a:hover,
 #navbar li a.active {
-    color: #088178;
+    color: #12605A;
 }
 
 #navbar li a.active::after,
@@ -133,7 +133,7 @@ img.logo {
     content: "";
     width: 30%;
     height: 2px;
-    background: #088178;
+    background: #12605A;
     position: absolute;
     bottom: -4px;
     left: 20px;
@@ -151,7 +151,7 @@ img.logo {
 /* Home Page */
     /* Hero Image */
     #hero {
-        background-image: url("../img/hero4.png");
+        background-image: url("../img/hero.png");
         height: 90vh;
         width: 100%;
         background-size: cover;
@@ -168,13 +168,13 @@ img.logo {
     }
 
     #hero h1 {
-        color: #088178;
+        color: #12605A;
     }
 
     #hero button {
         background-image: url("../img/button.png");
         background-color: transparent;
-        color: #088178;
+        color: #12605A;
         border: 0;
         padding: 14px 80px 14px 65px;
         background-repeat: no-repeat;
@@ -1108,7 +1108,7 @@ img.logo {
     /* Hero Start */
     #hero {
         padding: 0 15px;
-        background-position: 55%;
+        background-position: 65%;
     }
 
     #hero h2 {
@@ -1434,7 +1434,7 @@ footer .copyright p {
     #hero {
         height: 90vh;
         padding: 0 25px;
-        background-position: top 30% right 30%;
+        background-position: top 30% right 38%;
     }
     /* Hero End */
     /* Cards Start */
