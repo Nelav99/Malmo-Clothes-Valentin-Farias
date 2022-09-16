@@ -23,56 +23,44 @@
         <div>
             <ul id="navbar">
                 <li><a href="../index.html">Home</a></li>
-                <li><a class="active" href="./shop.html">Shop</a></li>
+                <li><a href="./shop.html">Shop</a></li>
                 <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="./cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li id="lg-bag"><a class="active" href="./cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
             </ul>
         </div>
         <div id="mobile">
-            <a href="./pages/cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a class="active" href="./cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </section>
     <!-- NavBar End -->
     <!-- Individual Product Start -->
     <section id="prodetails" class="section-p1">
-        <div class="single-pro-image">
-            <img src="../img/products/f1.jpg" width="100%" id="MainImage" alt="T-shirt">
-            <div class="small-img-group">
-                <div class="small-img-col">
-                    <img src="../img/products/f1.jpg" width="100%" class="small-img" alt="T-shirt">
-                </div>
-                <div class="small-img-col">
-                    <img src="../img/products/f2.jpg" width="100%" class="small-img" alt="T-shirt">
-                </div>
-                <div class="small-img-col">
-                    <img src="../img/products/f5.jpg" width="100%" class="small-img" alt="T-shirt">
-                </div>
-                <div class="small-img-col">
-                    <img src="../img/products/n1.jpg" width="100%" class="small-img" alt="T-shirt">
-                </div>
+        <div id="productDetailsShow">
+            <div class="single-pro-image">
+                <img src="../img/products/f1.jpg" width="100%" id="MainImage" alt="T-shirt">
             </div>
-        </div>
-        <div class="single-pro-details">
-            <h6>Home / T-Shirt</h6>
-            <h4>Men's Fasion T-Shirt</h4>
-            <h2>$38.99</h2>
-            <select name="" id="">
-                <option value="Select Size">Select Size</option>
-                <option value="Extra Small">XS</option>
-                <option value="Small">S</option>
-                <option value="Medium">M</option>
-                <option value="Large">L</option>
-                <option value="Extra Large">XL</option>
-                <option value="Extra Extra Large">XXL</option>
-            </select>
-            <input type="number" value="1">
-            <button class="normal">Add To Cart</button>
-            <h4>Product Details</h4>
-            <span>The Sunflowers Shirts is made from a substantial 6.0 ox. per sq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched confort with each wear.Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head-turning package.</span>
+            <div class="single-pro-details">
+                <h6>Home / T-Shirt</h6>
+                <h4 class="name">Sunflowers Shirts</h4>
+                <h2 class="price">$38.99</h2>
+                <select name="" id="">
+                    <option value="Select Size">Select Size</option>
+                    <option value="Extra Small">XS</option>
+                    <option value="Small">S</option>
+                    <option value="Medium">M</option>
+                    <option value="Large">L</option>
+                    <option value="Extra Large">XL</option>
+                    <option value="Extra Extra Large">XXL</option>
+                </select>
+                <input type="number" value="1">
+                <button class="normal addToCart">Add To Cart</button>
+                <h4>Product Details</h4>
+                <span>The Sunflowers Shirts is made from a substantial 6.0 ox. per sq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched confort with each wear.Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head-turning package.</span>
+            </div>
         </div>
     </section>
     <!-- Individual Product End -->
@@ -218,24 +206,6 @@
         </div>
     </footer>
     <!-- Footer End -->
-    <script>
-        let MainImage = document.getElementById("MainImage");
-        let smalling = document.getElementsByClassName("small-img");
-
-        smalling[0].onclick = function() {
-            MainImage.src = smalling[0].src;
-        }
-        smalling[1].onclick = function() {
-            MainImage.src = smalling[1].src;
-        }
-        smalling[2].onclick = function() {
-            MainImage.src = smalling[2].src;
-        }
-        smalling[3].onclick = function() {
-            MainImage.src = smalling[3].src;
-        }
-    </script>
-    <script src="../index.js"></script>
-    <script src="../events.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>

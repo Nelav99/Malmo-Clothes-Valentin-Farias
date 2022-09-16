@@ -659,46 +659,85 @@ img.logo {
     /* Pagination End */
 /* Shop Page End */
 /* Single Product Start */
-    #prodetails {
+    #modalAdd.modal {
+        display: none;
+        background: rgba(0, 0, 0, 0.35);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        padding: 100px 80px 25px;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        align-content: center;
+    }
+
+    #modalAdd .modalContainer {
+        width: 90%;
+        height: 90%;
+        background-color: #E9CBBF;
+        padding: 60px;
         display: flex;
-        margin-top: 20px;
+        border-radius: 10px;
+        position: relative;
+        align-items: center;
     }
 
-    #prodetails .single-pro-image {
-        width: 40%;
-        margin-right: 50px;
-    }
-
-    .small-img-group {
+    #modalAdd .modalContainer .closeModal {
+        background-color: #E9CBBF;
+        width: 36px;
+        height: 36px;
         display: flex;
-        justify-content: space-between;
-    }
-
-    .small-img-col {
-        flex-basis: 24%;
+        justify-content: center;
+        align-items: center;
+        color: #222;
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        font-size: 28px;
         cursor: pointer;
     }
 
-    #prodetails .single-pro-details {
+    #modalAdd .modalContainer .single-pro-image {
+        width: 50%;
+        margin-right: 50px;
+    }
+
+    #modalAdd .modalContainer .single-pro-image #MainImage {
+        border-radius: 10px;
+        width: 95%;
+    }
+
+    #modalAdd .modalContainer .single-pro-details {
         width: 60%;
         padding-top: 30px;
+        text-align: justify;
     }
 
-    #prodetails .single-pro-details h4 {
-        padding: 40px 0 20px 0;
+    #modalAdd .modalContainer .single-pro-details h6 {
+        font-weight: 700;
+        font-size: 16px;
+        margin-top: -20px;
     }
 
-    #prodetails .single-pro-details h2 {
-        font-size: 26px;
+    #modalAdd .modalContainer .single-pro-details h4 {
+        padding: 30px 0;
+        font-size: 32px;
     }
 
-    #prodetails .single-pro-details select {
+    #modalAdd .modalContainer .single-pro-details h2 {
+        font-size: 30px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details select {
         display: block;
         padding: 5px 10px;
         margin-bottom: 10px;
     }
 
-    #prodetails .single-pro-details input {
+    #modalAdd .modalContainer .single-pro-details input {
         width: 50px;
         height: 47px;
         padding-left: 10px;
@@ -706,16 +745,16 @@ img.logo {
         margin-right: 10px;
     }
 
-    #prodetails .single-pro-details input:focus {
+    #modalAdd .modalContainer .single-pro-details input:focus {
         outline: none;
     }
 
-    #prodetails .single-pro-details button {
+    #modalAdd .modalContainer .single-pro-details button {
         background-color: #088178;
         color: #fff;
     }
 
-    #prodetails .single-pro-details span {
+    #modalAdd .modalContainer .single-pro-details span {
         line-height: 25px;
     }
 /* Single Product End */

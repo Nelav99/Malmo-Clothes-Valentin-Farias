@@ -83,7 +83,36 @@
         <h2>Featured Products</h2>
         <p>Summer Collection New Modern Design</p>
         <div id="containerProd" class="pro-container">
-            <!-- Productos agregados desde JS -->
+            <!-- Products add in JS -->
+        </div>
+        <div id="modalAdd" class="modal">
+            <!-- Modal add in JS -->
+            <div class="modalContainer">
+                <div class="closeModal" onclick="closeModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="single-pro-image">
+                    <img src="./img/products/f1.jpg" width="100%" id="MainImage" alt="${product.name}">
+                </div>
+                <div class="single-pro-details">
+                    <h6>Home / Shirts</h6>
+                    <h4>Sunflowers Shirts</h4>
+                    <h2>$38.99</h2>
+                    <select name="size" id="size">
+                        <option value="Select Size">Select Size</option>
+                        <option value="Extra Small">XS</option>
+                        <option value="Small">S</option>
+                        <option value="Medium">M</option>
+                        <option value="Large">L</option>
+                        <option value="Extra Large">XL</option>
+                        <option value="Extra Extra Large">XXL</option>
+                    </select>
+                    <input type="number" value="1">
+                    <button id="add${product.id}" class="normal addToCart">Add To Cart</button>
+                    <h4>Product Details</h4>
+                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid debitis enim velit expedita dolorum culpa iure eaque possimus fuga! Rem est, ipsam officiis ratione provident velit.</span>
+                </div>
+            </div>
         </div>
     </section>
     <!-- Products End -->
@@ -102,7 +131,7 @@
         <h2>New Arrivals</h2>
         <p>Summer Collection - New Modern Design</p>
         <div id="arrivalContainer" class="pro-container">
-            <!-- Productos agregados desde JS -->
+            <!-- Products add in JS -->
         </div>
     </section>
     <!-- New Arrivals End -->
@@ -208,6 +237,5 @@
     </footer>
     <!-- Footer End -->
     <script src="./script.js"></script>
-    <script src="./events.js"></script>
 </body>
 </html>
