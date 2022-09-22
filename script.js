@@ -77,7 +77,8 @@ products.push(product20);
 
 let features = products.slice(0, 8);
 let arrivalsProducts = products.slice(8, 20);
-let productPopUp = features + arrivalsProducts;
+
+let cart = [];
 
 // Funcion para mostrar productos Section Featured
 function showProducts(features) {
@@ -135,49 +136,55 @@ function showArrivals(arrivalsProducts) {
                 </div>
                 <a href=""><i class="fas fa-shopping-cart cart"></i></a>
             </div>`
+            arrivalsContainer.appendChild(divContainerArrivals);
         });
 }
 
 showArrivals(arrivalsProducts);
 
 //Funcion para inyectar Modal del Producto
-function showModal(productClick) {
+function showModal(products) {
     let modalContainer = document.getElementById("modalAdd");
     modalContainer.innerHTML = "";
 
-    productClick.forEach(product => {
-            let divContainerModal = document.createElement('div');
-            divContainerModal.classList.add('modalContainer');
-            divContainerModal.innerHTML = `
-                <div class="closeModal" onclick="closeModal()">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-                <div class="single-pro-image">
-                    <img src="${product.image}" width="100%" id="MainImage" alt="${product.name}">
-                </div>
-                <div class="single-pro-details">
-                    <h6>Home / ${product.category}</h6>
-                    <h4>${product.name}</h4>
-                    <h2>$${product.price}</h2>
-                    <select name="size" id="size">
-                        <option value="Select Size">Select Size</option>
-                        <option value="Extra Small">XS</option>
-                        <option value="Small">S</option>
-                        <option value="Medium">M</option>
-                        <option value="Large">L</option>
-                        <option value="Extra Large">XL</option>
-                        <option value="Extra Extra Large">XXL</option>
-                    </select>
-                    <input type="number" value="1">
-                    <button id="add${product.id}" class="normal addToCart">Add To Cart</button>
-                    <h4>Product Details</h4>
-                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid debitis enim velit expedita dolorum culpa iure eaque possimus fuga! Rem est, ipsam officiis ratione provident velit.</span>
-                </div>`
-            modalContainer.appendChild(divContainerModal);
-        });
+    products.forEach(product => {
+        let divContainerModal = document.createElement('div');
+        divContainerModal.classList.add('modalContainer');
+        divContainerModal.innerHTML = `
+            <div class="closeModal" onclick="closeModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="single-pro-image">
+                <img src="${product.image}" width="100%" id="MainImage" alt="${product.name}">
+            </div>
+            <div class="single-pro-details">
+                <h6>Home / ${product.category}</h6>
+                <h4>${product.name}</h4>
+                <h2>$${product.price}</h2>
+                <select name="size" id="size">
+                    <option value="Select Size">Select Size</option>
+                    <option value="Extra Small">XS</option>
+                    <option value="Small">S</option>
+                    <option value="Medium">M</option>
+                    <option value="Large">L</option>
+                    <option value="Extra Large">XL</option>
+                    <option value="Extra Extra Large">XXL</option>
+                </select>
+                <input type="number" value="1">
+                <button id="add${product.id}" class="normal addToCart">Add To Cart</button>
+                <h4>Product Details</h4>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid debitis enim velit expedita dolorum culpa iure eaque possimus fuga! Rem est, ipsam officiis ratione provident velit.</span>
+            </div>`
+        modalContainer.appendChild(divContainerModal);
+
+        // const buttonAddToCart = document.getElementById('add${product.id}');
+        // buttonAddToCart.addEventListener('click', () => {
+        //     addToCart(product.id);
+        // })
+    });
 }
 
-
+showModal(products);
 // Products End
 
 // PopUp Start
@@ -197,4 +204,11 @@ modalAdd.onclick = (event) => {
     }
 }
 // PopUp End
+
+// Cart
+
+const addToCart = (productId) => {
+    const item = features.find((prod) => prod.id === productId);
+    cart.push(item);
+}
 

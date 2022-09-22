@@ -20,23 +20,74 @@
     <!-- NavBar Start -->
     <section id="header">
         <a class="imgL" href="#"> <img src="./img/logo/Malmo.png" class="logo" alt="Malmo Logo"></a>
-        <div>
-            <ul id="navbar">
-                <li><a class="active" href="./index.html">Home</a></li>
-                <li><a href="./pages/shop.html">Shop</a></li>
-                <li><a href="./pages/blog.html">Blog</a></li>
-                <li><a href="./pages/about.html">About</a></li>
-                <li><a href="./pages/contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="./pages/cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
-                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-            </ul>
-        </div>
+        <ul id="navbar">
+            <li><a class="active" href="./index.html">Home</a></li>
+            <li><a href="./pages/shop.html">Shop</a></li>
+            <li><a href="./pages/blog.html">Blog</a></li>
+            <li><a href="./pages/about.html">About</a></li>
+            <li><a href="./pages/contact.html">Contact</a></li>
+            <button id="bag" class="navbar-right normal" onclick="openBag()">
+                <li><a href="#"><i id="totalBag" class="fa fa-shopping-cart"></i><span id="numberOfProducts" class="badge">0</span></a></li>
+            </button>
+            <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+        </ul>
         <div id="mobile">
             <a href="./pages/cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </section>
     <!-- NavBar End -->
+
+    <!-- Cart Start-->
+    <section id="cartContainer" class="cartContainer">
+            <!-- products of cart -->
+            <div id="shoppingCart" class="shopping-cart">
+                <div id="total" class="shopping-cart-header">
+                    <span>Products: </span>
+                    <div id="totalContainer" class="shopping-cart-total">
+                        <span class="lighter-text">Total:</span>
+                        <span id="totalCart" class="main-color-text">$0.00</span>
+                    </div>
+                </div> <!--end shopping-cart-header -->
+
+                <div id="items" class="cartEmpty">
+                    <span>Your cart is empty</span>
+                </div>
+
+                <template id="template-shopping-cart">
+                    <ul class="shopping-cart-items">
+                        <li class="clearfix">
+                            <div class="btnRemove">
+                                <button id="remove" class="normal remove"><img src="./img/icons/cancel.png" alt="delete" class="delete"></button>
+                            </div>
+                            <div class="imageProduct">
+                                <img src="./img/products/f1.jpg" alt="item1" id="imgCart"/>
+                            </div>
+                            <div class="productDetailsCart">
+                                <h6 class="item-name">Sunflowers Shirt</h6>
+                                <div id="priceContainerCart">
+                                    <h4 id="cartCurrency" class="item-price">$ </h4>
+                                    <h4 id="cartPrice" class="item-price">ff</h4>
+                                </div>
+                                <div class="quantity">
+                                    <button class="subtractQuantity">-</button>
+                                    <span class="item-quantity">01</span>
+                                    <button class="addQuantity">+</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </template>
+                <div class="shopping-checkout">
+                    <button id="closeBag" class="normal closeBag" onclick="closeBag()">Close</button>
+                    <form action="./pages/cart.html">
+                        <button id="checkoutBag" type="submit" class="normal">Checkout</button>
+                    </form>
+                </div>
+            </div>
+    </section>
+    
+    <!-- Cart End -->
 
     <!-- Body Start-->
     <!-- Hero Image -->
@@ -83,37 +134,77 @@
         <h2>Featured Products</h2>
         <p>Summer Collection New Modern Design</p>
         <div id="containerProd" class="pro-container">
-            <!-- Products add in JS -->
-        </div>
-        <div id="modalAdd" class="modal">
-            <!-- Modal add in JS -->
-            <div class="modalContainer">
-                <div class="closeModal" onclick="closeModal()">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-                <div class="single-pro-image">
-                    <img src="./img/products/f1.jpg" width="100%" id="MainImage" alt="${product.name}">
-                </div>
-                <div class="single-pro-details">
-                    <h6>Home / Shirts</h6>
-                    <h4>Sunflowers Shirts</h4>
-                    <h2>$38.99</h2>
-                    <select name="size" id="size">
-                        <option value="Select Size">Select Size</option>
-                        <option value="Extra Small">XS</option>
-                        <option value="Small">S</option>
-                        <option value="Medium">M</option>
-                        <option value="Large">L</option>
-                        <option value="Extra Large">XL</option>
-                        <option value="Extra Extra Large">XXL</option>
-                    </select>
-                    <input type="number" value="1">
-                    <button id="add${product.id}" class="normal addToCart">Add To Cart</button>
-                    <h4>Product Details</h4>
-                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid debitis enim velit expedita dolorum culpa iure eaque possimus fuga! Rem est, ipsam officiis ratione provident velit.</span>
-                </div>
+            <div id="cards">
+                <!-- Products add in JS -->
             </div>
         </div>
+        <template id="template-card">
+            <div class="pro">
+                <div id="btnOpenPopUp" class="openProductDetails">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="des">
+                        <span>${product.create}</span>
+                        <h5>${product.name}</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div id="priceContainerFeatures">
+                            <h4 id="currencyFeatures">$ </h4>
+                            <h4 id="priceFeatures">{product.price}</h4>
+                        </div>
+                        <h6 style="display: none;">${product.category}</h6>
+                    </div>
+                    <button id="btnSetModal" class="normal viewDetails" onclick="openModal()">Add To Cart</button>
+                </div>
+            </div>
+        </template>
+        <div id="modalAdd" class="modal">
+            <!-- Modal add in JS -->
+            <span>Not Found</span>
+        </div>
+        <template id="template-modal">
+            <div id="modalDetailsContainer" class="modalContainer">
+                <div class="closeModal" onclick="closeModal()">
+                    <i class="fa-solid fa-xmark closeModal" onclick="closeModal()"></i>
+                </div>
+                <div class="single-pro-details">
+                    <div class="imageProduct">
+                        <img src="./img/products/f1.jpg" id="cartImage" class="imageProdCart" alt="Product Image">
+                    </div>
+                    <h5 style="display: none;">Shirt</h5>
+                    <h6>Home / Shirts</h6>
+                    <h4>Sunflowers Shirts</h4>
+                    <div id="priceContainerModal">
+                        <h2 id="currencyModal">$ </h2>
+                        <h2 id="priceModal">{product.price}</h2>
+                    </div>
+                    <div class="selectSize">
+                        <select name="size" id="size">
+                            <option value="Select Size">Select Size</option>
+                            <option value="Extra Small">XS</option>
+                            <option value="Small">S</option>
+                            <option value="Medium">M</option>
+                            <option value="Large">L</option>
+                            <option value="Extra Large">XL</option>
+                            <option value="Extra Extra Large">XXL</option>
+                        </select>
+                    </div>
+                    <div class="quantityModal">
+                        <h6>Quantity:</h6>
+                        <button class="subtractQuantityModal">-</button>
+                        <span class="itemQuantityModal">01</span>
+                        <button class="addQuantityModal">+</button>
+                    </div>
+                    <button id="btnAddToCart" class="normal addToCart">Add To Cart</button>
+                    <h4 class="proDetails">Product Details</h4>
+                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid debitis enim velit expedita dolorum culpa iure eaque possimus fuga.</span>
+                </div>
+            </div>
+        </template>
     </section>
     <!-- Products End -->
 
@@ -131,7 +222,32 @@
         <h2>New Arrivals</h2>
         <p>Summer Collection - New Modern Design</p>
         <div id="arrivalContainer" class="pro-container">
-            <!-- Products add in JS -->
+            <div id="cardsArrivals">
+                <!-- Products add in JS -->
+            </div>
+            <template id="template-card-arrivals">
+                <div class="pro" >
+                    <div class="openProductDetails"" onclick="openModal()">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="des">
+                            <span>${product.create}</span>
+                            <h5>${product.name}</h5>
+                            <div class="star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div id="priceContainerArrivals">
+                                <h4 id="arrivalsCurrency">$ </h4>
+                                <h4 id="arrivalsPrice">ff</h4>
+                            </div>
+                        </div>
+                        <button id="btnOpenPopUp" data-id=""><i class="fas fa-shopping-cart cart"></i></button>
+                    </div>
+                </div>
+            </template>
         </div>
     </section>
     <!-- New Arrivals End -->
@@ -236,6 +352,7 @@
         </div>
     </footer>
     <!-- Footer End -->
-    <script src="./script.js"></script>
+    <!-- <script src="./script.js"></script> -->
+    <script src="./cart.js"></script>
 </body>
 </html>
