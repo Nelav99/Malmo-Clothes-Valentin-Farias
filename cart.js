@@ -28,11 +28,12 @@ cardsArrivals.addEventListener('click', e => {
 modalShow.addEventListener('click', e => {
     addToCart(e);
     clickOutside(e);
-    // btnActionModal(e);
+    quantityModal(e);
 });
 
 items.addEventListener('click', e => {
     btnAction(e);
+    btnRemove(e);
 });
 
 // NavBar Start
@@ -50,11 +51,11 @@ if (close) {
 }
 
 //NavBar End
-const data = [
+let data = [
     {
         "id": 1,
-        "image": "../img/products/f1.jpg",
-        "imageCart": "../img/products/f1.jpg",
+        "image": "./img/products/f1.jpg",
+        "imageCart": "./img/products/f1.jpg",
         "create": "Malmö",
         "name": "Sunflowers Shirt",
         "price": 38.99,
@@ -63,8 +64,8 @@ const data = [
     },
     {
         "id": 2,
-        "image": "../img/products/f2.jpg",
-        "imagecart": "../img/products/f2.jpg",
+        "image": "./img/products/f2.jpg",
+        "imagecart": "./img/products/f2.jpg",
         "create": "Malmö",
         "name": "Coconut Beach Shirts",
         "price": 38.99,
@@ -73,8 +74,8 @@ const data = [
     },
     {
         "id": 3,
-        "image": "../img/products/f3.jpg",
-        "imagecart": "../img/products/f3.jpg",
+        "image": "./img/products/f3.jpg",
+        "imagecart": "./img/products/f3.jpg",
         "create": "Malmö",
         "name": "Cést La Vie T-Shirt",
         "price": 18.99,
@@ -83,8 +84,8 @@ const data = [
     },
     {
         "id": 4,
-        "image": "../img/products/f4.jpg",
-        "imagecart": "../img/products/f4.jpg",
+        "image": "./img/products/f4.jpg",
+        "imagecart": "./img/products/f4.jpg",
         "create": "Malmö",
         "name": "Mawi T-Shirt",
         "price": 18.99,
@@ -93,8 +94,8 @@ const data = [
     },
     {
         "id": 5,
-        "image": "../img/products/f5.jpg",
-        "imagecart": "../img/products/f5.jpg",
+        "image": "./img/products/f5.jpg",
+        "imagecart": "./img/products/f5.jpg",
         "create": "Malmö",
         "name": "Pineapple Shirts",
         "price": 38.99,
@@ -103,8 +104,8 @@ const data = [
     },
     {
         "id": 6,
-        "image": "../img/products/f6.jpg",
-        "imagecart": "../img/products/f6.jpg",
+        "image": "./img/products/f6.jpg",
+        "imagecart": "./img/products/f6.jpg",
         "create": "Malmö",
         "name": "Multi-Brown Jacket",
         "price": 52.99,
@@ -113,8 +114,8 @@ const data = [
     },
     {
         "id": 7,
-        "image": "../img/products/f7.jpg",
-        "imagecart": "../img/products/f7.jpg",
+        "image": "./img/products/f7.jpg",
+        "imagecart": "./img/products/f7.jpg",
         "create": "Malmö",
         "name": "Stockholm Jacket",
         "price": 52.99,
@@ -123,8 +124,8 @@ const data = [
     },
     {
         "id": 8,
-        "image": "../img/products/f8.jpg",
-        "imagecart": "../img/products/f8.jpg",
+        "image": "./img/products/f8.jpg",
+        "imagecart": "./img/products/f8.jpg",
         "create": "Malmö",
         "name": "Classic Trousers",
         "price": 25.99,
@@ -133,8 +134,8 @@ const data = [
     },
     {
         "id": 9,
-        "image": "../img/products/n1.jpg",
-        "imagecart": "../img/products/n1.jpg",
+        "image": "./img/products/n1.jpg",
+        "imagecart": "./img/products/n1.jpg",
         "create": "Malmö",
         "name": "Chest Pocket T-Shirt",
         "price": 38.99,
@@ -143,8 +144,8 @@ const data = [
     },
     {
         "id": 10,
-        "image": "../img/products/n2.jpg",
-        "imagecart": "../img/products/n2.jpg",
+        "image": "./img/products/n2.jpg",
+        "imagecart": "./img/products/n2.jpg",
         "create": "Malmö",
         "name": "Two-Tone Pants",
         "price": 24.99,
@@ -153,8 +154,8 @@ const data = [
     },
     {
         "id": 11,
-        "image": "../img/products/n3.jpg",
-        "imagecart": "../img/products/n3.jpg",
+        "image": "./img/products/n3.jpg",
+        "imagecart": "./img/products/n3.jpg",
         "create": "Malmö",
         "name": "Casual Loose Pants",
         "price": 24.99,
@@ -163,8 +164,8 @@ const data = [
     },
     {
         "id": 12,
-        "image": "../img/products/n4.jpg",
-        "imagecart": "../img/products/n4.jpg",
+        "image": "./img/products/n4.jpg",
+        "imagecart": "./img/products/n4.jpg",
         "create": "Malmö",
         "name": "Striped Shirts",
         "price": 38.99,
@@ -173,8 +174,8 @@ const data = [
     },
     {
         "id": 13,
-        "image": "../img/products/n5.jpg",
-        "imagecart": "../img/products/n5.jpg",
+        "image": "./img/products/n5.jpg",
+        "imagecart": "./img/products/n5.jpg",
         "create": "Malmö",
         "name": "Pineapple Set",
         "price": 58.99,
@@ -183,8 +184,8 @@ const data = [
     },
     {
         "id": 14,
-        "image": "../img/products/n6.jpg",
-        "imagecart": "../img/products/n6.jpg",
+        "image": "./img/products/n6.jpg",
+        "imagecart": "./img/products/n6.jpg",
         "create": "Malmö",
         "name": "Multi-Lines Set",
         "price": 58.99,
@@ -193,8 +194,8 @@ const data = [
     },
     {
         "id": 15,
-        "image": "../img/products/n7.jpg",
-        "imagecart": "../img/products/n7.jpg",
+        "image": "./img/products/n7.jpg",
+        "imagecart": "./img/products/n7.jpg",
         "create": "Malmö",
         "name": "Sunflower Up Shirts",
         "price": 38.99,
@@ -203,8 +204,8 @@ const data = [
     },
     {
         "id": 16,
-        "image": "../img/products/n8.jpg",
-        "imagecart": "../img/products/n8.jpg",
+        "image": "./img/products/n8.jpg",
+        "imagecart": "./img/products/n8.jpg",
         "create": "Malmö",
         "name": "Sun & Moon Shirts",
         "price": 38.99,
@@ -213,8 +214,8 @@ const data = [
     },
     {
         "id": 17,
-        "image": "../img/products/n9.jpg",
-        "imagecart": "../img/products/n9.jpg",
+        "image": "./img/products/n9.jpg",
+        "imagecart": "./img/products/n9.jpg",
         "create": "Malmö",
         "name": "Three Color T-Shirt",
         "price": 22.99,
@@ -223,8 +224,8 @@ const data = [
     },
     {
         "id": 18,
-        "image": "../img/products/n10.jpg",
-        "imagecart": "../img/products/n10.jpg",
+        "image": "./img/products/n10.jpg",
+        "imagecart": "./img/products/n10.jpg",
         "create": "Malmö",
         "name": "Color Curve T-Shirt",
         "price": 22.99,
@@ -233,8 +234,8 @@ const data = [
     },
     {
         "id": 19,
-        "image": "../img/products/n11.jpg",
-        "imagecart": "../img/products/n11.jpg",
+        "image": "./img/products/n11.jpg",
+        "imagecart": "./img/products/n11.jpg",
         "create": "Malmö",
         "name": "Tomorrow T-Shirt",
         "price": 24.99,
@@ -243,8 +244,8 @@ const data = [
     },
     {
         "id": 20,
-        "image": "../img/products/n12.jpg",
-        "imagecart": "../img/products/n12.jpg",
+        "image": "./img/products/n12.jpg",
+        "imagecart": "./img/products/n12.jpg",
         "create": "Malmö",
         "name": "NASA T-Shirt",
         "price": 24.99,
@@ -252,8 +253,6 @@ const data = [
         "category": "T-Shirts"
     }
 ];
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     if(localStorage.getItem('cart')) {
@@ -326,7 +325,6 @@ const setModal = Object => {
     showModals();
 }
 
-let valueIdModificate;
 const showModals = () => {
     modalShow.innerHTML = '';
     modalObject.forEach(productModal => {
@@ -339,11 +337,13 @@ const showModals = () => {
 
         // buttons add and remove
         templateModal.querySelector('.subtractQuantityModal').dataset.id = productModal.id,
-        templateModal.querySelector('.addQuantityModal').dataset.id = productModal.id
+        templateModal.querySelector('.addQuantityModal').dataset.id = productModal.id,
+
         valueIdModificate = productModal.id;
         const clone = templateModal.cloneNode(true);
         fragment.appendChild(clone);
     });
+
     modalShow.appendChild(fragment);
     modalVariation.push(modalObject.find(el => el.id == valueIdModificate));
     modalObject = [];
@@ -353,17 +353,12 @@ const showModals = () => {
 const addToCart = e => {
     if(e.target.classList.contains('addToCart')) {
         setCart(e.target.parentElement);
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Your product has been added to cart',
-            showConfirmButton: false,
-            timer: 1500
-        })
     }
+
     e.stopPropagation();
 }
 
+let productOut;
 const setCart = Object => {
     let product = {
         id: Object.querySelector('#btnAddToCart').dataset.id,
@@ -372,18 +367,44 @@ const setCart = Object => {
         price: Object.querySelector('#priceModal').textContent,
         currency: Object.querySelector('#currencyModal').textContent,
         quantity: 1,
-        size: Object.querySelector('#size').textContent
+        size: Object.querySelector('select').value,
+        idSizeValue: 0
     }
 
-    if (cart.some((el) => el.id == product.id)) {
-        cart.find((el) => el.id === product.id).quantity = (cart.find((el) => el.id === product.id).quantity + 1);
+    product.idSizeValue = product.id + product.size;
+
+    if(cart.find(el => el.id == product.id && el.size == product.size)) {
+        cart.find(el => el.id == product.id && el.size == product.size).quantity++;
     } else  {
         cart.push({ ...product });
     }
 
+    // cart.find(el => el.id == 2 && el.size == 'S').quantity = cart.find(el => el.id == 2 && el.size == 'S').quantity + 1;
+
+    if(cart.some(el => el.size == "Select Size")){
+        if(cart.find(el => el.size == "Select Size")) {
+            const substractSelectSize = cart.indexOf(cart.find( el => el.size == "Select Size"));
+            cart.splice(substractSelectSize, 1);
+        }
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Choose your size, please!',
+            confirmButtonText: 'Retry'
+        });
+    } else {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Your product has been added to cart',
+            showConfirmButton: false,
+            timer: 1500,
+        })
+    }
+
     showCart();
 }
-
 
 const showCart = () => {
     // console.log(cart);
@@ -394,12 +415,14 @@ const showCart = () => {
         templateCart.querySelector('#imgCart').setAttribute("src", product.imagecart),
         templateCart.querySelector('#cartCurrency').textContent = product.currency,
         templateCart.querySelector('#cartPrice').textContent = (product.price * product.quantity).toFixed(2),
+        templateCart.querySelector('#cartSize').textContent = 'Size: ' + product.size,
 
         // buttons add and remove
         templateCart.querySelector('.subtractQuantity').dataset.id = product.id,
         templateCart.querySelector('.addQuantity').dataset.id = product.id,
-        templateCart.querySelector('.remove').dataset.id = product.id,
-        templateCart.querySelector('.delete').dataset.id = product.id
+        templateCart.querySelector('.remove').dataset.id = product.id + ',' + product.size,
+        templateCart.querySelector('.delete').dataset.id = product.id + ',' + product.size,
+        templateCart.querySelector('#cartSize').dataset.id = product.idSizeValue
 
         const clone = templateCart.cloneNode(true);
         fragment.appendChild(clone);
@@ -494,16 +517,58 @@ const btnAction = e => {
         cart.find(el => el.id == e.target.dataset.id).quantity = (cart.find(el => el.id == e.target.dataset.id).quantity + 1);
         showCart();
     }
+}
 
-
+const btnRemove = e => {
     // Delete
     if(e.target.classList.contains('remove') || e.target.classList.contains('delete')) {
-        if(cart.find(el => el.id == e.target.dataset.id)) {
-            const position = cart.indexOf(cart.find( el => el.id == e.target.dataset.id));
+        // console.log(e.target.dataset.id);
+        const valueId = e.target.dataset.id;
+        let separateId = valueId.split(',');
+        if(cart.find(el => el.id == separateId[0] && el.size == separateId[1])) {
+            let position = cart.indexOf(cart.find(el => el.id == separateId[0] && el.size == separateId[1]));
             cart.splice(position, 1);
         }
         showCart();
     }
 
     e.stopPropagation();
+}
+
+const quantityModal = e => {
+    // console.log(e.target.dataset.id);
+    if (e.target.dataset.id != undefined) {
+        const containerModalId = modalVariation.find(el => el.id == e.target.dataset.id);
+        let containerModalQuantity = containerModalId.quantity;
+        let quantityNumber = containerModalQuantity;
+        const btnSubstract = document.querySelector('.subtractQuantityModal');
+        if(quantityNumber <= 1) {
+            btnSubstract.setAttribute("disabled", "");
+        } else {
+            btnSubstract.removeAttribute("disabled", "");
+        }
+
+        //substract
+        if (e.target.classList.contains('subtractQuantityModal')) {
+            modalVariation.find(el => el.id == e.target.dataset.id).quantity = (modalVariation.find(el => el.id == e.target.dataset.id).quantity - 1);
+            let itemSetModalSubstract = document.querySelector('.itemQuantityModal');
+            if (modalVariation.find(el => el.id == e.target.dataset.id).quantity === 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'The quantity is not defined. Remember that the value cannot be less than 0. Please, try again!',
+                    confirmButtonText: 'Retry'
+                })
+            }
+            itemSetModalSubstract.innerText = modalVariation.find(el => el.id == e.target.dataset.id).quantity;
+        }
+        // //Add
+        if (e.target.classList.contains('addQuantityModal')) {
+            modalVariation.find(el => el.id == e.target.dataset.id).quantity = (modalVariation.find(el => el.id == e.target.dataset.id).quantity) + 1;
+            let itemSetModalAdd = document.querySelector('.itemQuantityModal');
+            itemSetModalAdd.innerText = modalVariation.find(el => el.id == e.target.dataset.id).quantity;
+        }
+
+        e.stopPropagation();
+    }
 }

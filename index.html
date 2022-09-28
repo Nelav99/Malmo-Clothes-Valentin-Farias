@@ -32,7 +32,8 @@
             <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
         </ul>
         <div id="mobile">
-            <a href="./pages/cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="totalBag" class="fa fa-shopping-cart"></i>
+            <span id="numberOfProducts" class="badge">0</span>
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </section>
@@ -69,6 +70,7 @@
                                     <h4 id="cartCurrency" class="item-price">$ </h4>
                                     <h4 id="cartPrice" class="item-price">ff</h4>
                                 </div>
+                                <h6 id="cartSize" class="item-size">Size:</h6>
                                 <div class="quantity">
                                     <button class="subtractQuantity">-</button>
                                     <span class="item-quantity">01</span>
@@ -183,20 +185,20 @@
                         <h2 id="priceModal">{product.price}</h2>
                     </div>
                     <div class="selectSize">
-                        <select name="size" id="size">
-                            <option value="Select Size">Select Size</option>
-                            <option value="Extra Small">XS</option>
-                            <option value="Small">S</option>
-                            <option value="Medium">M</option>
-                            <option value="Large">L</option>
-                            <option value="Extra Large">XL</option>
-                            <option value="Extra Extra Large">XXL</option>
+                        <select name="size" id="sizeSelect" placeholder="Select Size" required>
+                            <option value="Select Size" selected disabled>Select Size</option>
+                            <option value="XS" id="sizeValue" class="xs">XS</option>
+                            <option value="S" id="sizeValue" class="s">S</option>
+                            <option value="M" id="sizeValue" class="m">M</option>
+                            <option value="L" id="sizeValue" class="l">L</option>
+                            <option value="XL" id="sizeValue" class="xl">XL</option>
+                            <option value="XXL" id="sizeValue" class="xxl">XXL</option>
                         </select>
                     </div>
                     <div class="quantityModal">
                         <h6>Quantity:</h6>
                         <button class="subtractQuantityModal">-</button>
-                        <span class="itemQuantityModal">01</span>
+                        <span class="itemQuantityModal">1</span>
                         <button class="addQuantityModal">+</button>
                     </div>
                     <button id="btnAddToCart" class="normal addToCart">Add To Cart</button>
