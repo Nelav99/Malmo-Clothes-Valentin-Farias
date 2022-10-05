@@ -50,211 +50,20 @@ if (close) {
     });
 }
 
-//NavBar End
-let data = [
-    {
-        "id": 1,
-        "image": "./img/products/f1.jpg",
-        "imageCart": "./img/products/f1.jpg",
-        "create": "Malmö",
-        "name": "Sunflowers Shirt",
-        "price": 38.99,
-        "currency": "$",
-        "category": "Shirts"
-    },
-    {
-        "id": 2,
-        "image": "./img/products/f2.jpg",
-        "imagecart": "./img/products/f2.jpg",
-        "create": "Malmö",
-        "name": "Coconut Beach Shirts",
-        "price": 38.99,
-        "currency": "$",
-        "category": "Shirts"
-    },
-    {
-        "id": 3,
-        "image": "./img/products/f3.jpg",
-        "imagecart": "./img/products/f3.jpg",
-        "create": "Malmö",
-        "name": "Cést La Vie T-Shirt",
-        "price": 18.99,
-        "currency": "$",
-        "category": "T-Shirts"
-    },
-    {
-        "id": 4,
-        "image": "./img/products/f4.jpg",
-        "imagecart": "./img/products/f4.jpg",
-        "create": "Malmö",
-        "name": "Mawi T-Shirt",
-        "price": 18.99,
-        "currency": "$",
-        "category": "T-Shirts"
-    },
-    {
-        "id": 5,
-        "image": "./img/products/f5.jpg",
-        "imagecart": "./img/products/f5.jpg",
-        "create": "Malmö",
-        "name": "Pineapple Shirts",
-        "price": 38.99,
-        "currency": "$",
-        "category": "Shirts"
-    },
-    {
-        "id": 6,
-        "image": "./img/products/f6.jpg",
-        "imagecart": "./img/products/f6.jpg",
-        "create": "Malmö",
-        "name": "Multi-Brown Jacket",
-        "price": 52.99,
-        "currency": "$",
-        "category": "Jackets"
-    },
-    {
-        "id": 7,
-        "image": "./img/products/f7.jpg",
-        "imagecart": "./img/products/f7.jpg",
-        "create": "Malmö",
-        "name": "Stockholm Jacket",
-        "price": 52.99,
-        "currency": "$",
-        "category": "Jackets"
-    },
-    {
-        "id": 8,
-        "image": "./img/products/f8.jpg",
-        "imagecart": "./img/products/f8.jpg",
-        "create": "Malmö",
-        "name": "Classic Trousers",
-        "price": 25.99,
-        "currency": "$",
-        "category": "Trousers"
-    },
-    {
-        "id": 9,
-        "image": "./img/products/n1.jpg",
-        "imagecart": "./img/products/n1.jpg",
-        "create": "Malmö",
-        "name": "Chest Pocket T-Shirt",
-        "price": 38.99,
-        "currency": "$",
-        "category": "T-Shirts"
-    },
-    {
-        "id": 10,
-        "image": "./img/products/n2.jpg",
-        "imagecart": "./img/products/n2.jpg",
-        "create": "Malmö",
-        "name": "Two-Tone Pants",
-        "price": 24.99,
-        "currency": "$",
-        "category": "Trousers"
-    },
-    {
-        "id": 11,
-        "image": "./img/products/n3.jpg",
-        "imagecart": "./img/products/n3.jpg",
-        "create": "Malmö",
-        "name": "Casual Loose Pants",
-        "price": 24.99,
-        "currency": "$",
-        "category": "Trousers"
-    },
-    {
-        "id": 12,
-        "image": "./img/products/n4.jpg",
-        "imagecart": "./img/products/n4.jpg",
-        "create": "Malmö",
-        "name": "Striped Shirts",
-        "price": 38.99,
-        "currency": "$",
-        "category": "Shirts"
-    },
-    {
-        "id": 13,
-        "image": "./img/products/n5.jpg",
-        "imagecart": "./img/products/n5.jpg",
-        "create": "Malmö",
-        "name": "Pineapple Set",
-        "price": 58.99,
-        "currency": "$",
-        "category": "Sets"
-    },
-    {
-        "id": 14,
-        "image": "./img/products/n6.jpg",
-        "imagecart": "./img/products/n6.jpg",
-        "create": "Malmö",
-        "name": "Multi-Lines Set",
-        "price": 58.99,
-        "currency": "$",
-        "category": "Sets"
-    },
-    {
-        "id": 15,
-        "image": "./img/products/n7.jpg",
-        "imagecart": "./img/products/n7.jpg",
-        "create": "Malmö",
-        "name": "Sunflower Up Shirts",
-        "price": 38.99,
-        "currency": "$",
-        "category": "Shirts"
-    },
-    {
-        "id": 16,
-        "image": "./img/products/n8.jpg",
-        "imagecart": "./img/products/n8.jpg",
-        "create": "Malmö",
-        "name": "Sun & Moon Shirts",
-        "price": 38.99,
-        "currency": "$",
-        "category": "Shirts"
-    },
-    {
-        "id": 17,
-        "image": "./img/products/n9.jpg",
-        "imagecart": "./img/products/n9.jpg",
-        "create": "Malmö",
-        "name": "Three Color T-Shirt",
-        "price": 22.99,
-        "currency": "$",
-        "category": "T-Shirts"
-    },
-    {
-        "id": 18,
-        "image": "./img/products/n10.jpg",
-        "imagecart": "./img/products/n10.jpg",
-        "create": "Malmö",
-        "name": "Color Curve T-Shirt",
-        "price": 22.99,
-        "currency": "$",
-        "category": "T-Shirts"
-    },
-    {
-        "id": 19,
-        "image": "./img/products/n11.jpg",
-        "imagecart": "./img/products/n11.jpg",
-        "create": "Malmö",
-        "name": "Tomorrow T-Shirt",
-        "price": 24.99,
-        "currency": "$",
-        "category": "T-Shirts"
-    },
-    {
-        "id": 20,
-        "image": "./img/products/n12.jpg",
-        "imagecart": "./img/products/n12.jpg",
-        "create": "Malmö",
-        "name": "NASA T-Shirt",
-        "price": 24.99,
-        "currency": "$",
-        "category": "T-Shirts"
-    }
-];
+const fetchData = async () => {
+    fetch('./data.json')
+        .then(res => res.json())
+        .then(data => {
+            showFeatured(data);
+            showArrivals(data);
+        })
+        .catch((error => {
+            console.log(error);
+        }));
+}
 
 document.addEventListener('DOMContentLoaded', () => {
+    fetchData();
     if(localStorage.getItem('cart')) {
         cart = JSON.parse(localStorage.getItem('cart'));
         showCart();
@@ -294,9 +103,6 @@ const showArrivals = data => {
     });
     cardsArrivals.appendChild(fragment);
 }
-
-showFeatured(data);
-showArrivals(data);
 
 // Show Modal
 const showProductModal = e => {
@@ -373,11 +179,7 @@ const setCart = Object => {
 
     product.idSizeValue = product.id + product.size;
 
-    if(cart.find(el => el.id == product.id && el.size == product.size)) {
-        cart.find(el => el.id == product.id && el.size == product.size).quantity++;
-    } else  {
-        cart.push({ ...product });
-    }
+    cart.find(el => el.id == product.id && el.size == product.size) ? cart.find(el => el.id == product.id && el.size == product.size).quantity++ : cart.push({ ...product });
 
     // cart.find(el => el.id == 2 && el.size == 'S').quantity = cart.find(el => el.id == 2 && el.size == 'S').quantity + 1;
 
@@ -478,11 +280,7 @@ const closeModal = () => {
 function clickOutside(e){
     // console.log(e.target.classList.contains('modal'));
     containerModal.addEventListener('click', e => {
-        if(e.target.classList.contains('modal') || e.target.classList.contains('closeModal')) {
-            containerModal.style.display = 'none';
-        } else {
-            containerModal.style.display = 'flex';
-        }
+        e.target.classList.contains('modal') || e.target.classList.contains('closeModal') ? containerModal.style.display = 'none' : containerModal.style.display = 'flex';
     });
 }
 // PopUp End
@@ -542,11 +340,7 @@ const quantityModal = e => {
         let containerModalQuantity = containerModalId.quantity;
         let quantityNumber = containerModalQuantity;
         const btnSubstract = document.querySelector('.subtractQuantityModal');
-        if(quantityNumber <= 1) {
-            btnSubstract.setAttribute("disabled", "");
-        } else {
-            btnSubstract.removeAttribute("disabled", "");
-        }
+        quantityNumber <= 1 ? btnSubstract.setAttribute("disabled", "") : btnSubstract.removeAttribute("disabled", "");
 
         //substract
         if (e.target.classList.contains('subtractQuantityModal')) {

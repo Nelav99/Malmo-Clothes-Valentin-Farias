@@ -1578,7 +1578,7 @@ img.logo {
     }
     /* Navbar Start */
     #header {
-        padding: 10px 30px;
+        padding: 15px;
     }
 
     #navbar {
@@ -1646,18 +1646,33 @@ img.logo {
 
     #mobile #numberOfProducts {
         right: 70px;
-        top: 10px;
+        top: 12px;
     }
 
     #bag li {
         display: none;
+    }
+
+    .shopping-cart {
+        width: 100%;
+        top: 78px;
+        right: 0;
+        margin: 0;
+    }
+
+    .shopping-cart-items .clearfix .imageProduct {
+        padding: 5px;
+    }
+
+    .shopping-cart-items .clearfix .productDetailsCart {
+        padding-top: 5px;
     }
     /* Navbar End */
 /* Home Page Start */
     /* Hero Start */
     #hero {
         padding: 0 15px;
-        background-position: 65%;
+        background-position: 60%;
     }
 
     #hero h2 {
@@ -1682,7 +1697,94 @@ img.logo {
     #product1 .pro {
         width: 100%;
     }
+
+    #product1 .pro-container #cards {
+        padding: 0;
+    }
     /* Products End */
+    /* Modal Start */
+    #modalAdd.modal {
+        padding: 105px 20px 20px 20px;
+    }
+
+    #modalAdd .modalContainer {
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    #modalAdd .modalContainer .closeModal {
+        background-color: transparent;
+        top: 12px;
+        right: 12px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .imageProduct {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 10px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details #cartImage {
+        min-width: 50%;
+        max-width: 95%;
+        min-height: 50%;
+        max-height: 95%;
+    }
+
+    #modalAdd .modalContainer .single-pro-details h6,
+    #modalAdd .modalContainer .single-pro-details h4,
+    #modalAdd .modalContainer .single-pro-details #priceContainerModal {
+        padding-left: 15px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .selectSize {
+        padding-left: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .selectSize select {
+        width: 100%;
+        margin-right: 16px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .quantityModal {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .quantityModal h6 {
+        display: none;
+    }
+
+    #modalAdd .modalContainer .single-pro-details h4.proDetails {
+        display: none;
+    }
+
+    #modalAdd .modalContainer .single-pro-details span {
+        display: none;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .quantityModal .itemQuantityModal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    /* Modal End */
     /* Banner Start */
     #banner {
         margin: 10px 0;
@@ -1916,7 +2018,7 @@ footer .copyright p {
     /* Apply Coupon End */
 /* Cart Page End */
 }
-@media (min-width: 481px) and (max-width: 799px) {
+@media (min-width: 481px) and (max-width: 768px) {
     .section-p1 {
         padding: 40px 40px;
     }
@@ -1939,10 +2041,20 @@ footer .copyright p {
 
     #navbar.active {
         right: 0;
+        z-index: 9999;
+    }
+
+    #navbar #bag {
+        display: none;
     }
 
     #navbar li{
         margin-bottom: 25px;
+    }
+
+    .badge {
+        top: 14px;
+        right: 76px;
     }
 
     #mobile {
@@ -1977,6 +2089,12 @@ footer .copyright p {
     img.logo {
         width: 90%;
     }
+
+    .shopping-cart {
+        width: 62%;
+        top: 60px;
+        right: 0;
+    }
 /* Navbar End */
 /* Home Page Start*/
     /* Hero Start */
@@ -1988,7 +2106,7 @@ footer .copyright p {
     /* Hero End */
     /* Cards Start */
     #feature {
-        justify-content: center;
+        justify-content: space-evenly;
     }
 
     #feature .fe-box {
@@ -1996,14 +2114,106 @@ footer .copyright p {
     }
     /* Cards End */
     /* Products Start */
-    #product1 .pro-container {
-        justify-content: center;
+    #product1 .pro-container #cards,
+    #product1 .pro-container #cardsArrivals {
+        justify-content: space-evenly;
     }
 
     #product1 .pro {
         margin: 15px;
     }
     /* Products End */
+    /* Modal Start */
+    #modalAdd .modalContainer {
+        width: 100%;
+        padding: 45px 60px 30px 60px;
+    }
+
+    #modalAdd .modalContainer .closeModal {
+        top: 15px;
+        right: 20px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .imageProduct {
+        width: 100%;
+        height: 60%;
+        justify-content: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details #cartImage {
+        min-width: 65%;
+        max-width: 100%;
+        min-height: 65%;
+        max-height: 100%;
+    }
+
+    #modalAdd .modalContainer .single-pro-details h6 {
+        width: 100%;
+        height: auto;
+        margin-top: 22px;
+        text-align: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details h4 {
+        height: auto;
+        margin: 10px 0 0 0;
+        text-align: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details #priceContainerModal {
+        height: auto;
+    }
+
+    #modalAdd .modalContainer .single-pro-details #priceContainerModal h2#currencyModal {
+        width: 75%;
+        text-align: end;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .selectSize {
+        height: auto;
+        width: 40%;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .selectSize select {
+        width: 100%;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .quantityModal {
+        height: auto;
+        width: 50%;
+        margin-left: 35px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .quantityModal h6 {
+        margin: 0;
+        margin-right: 10px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details h4.proDetails,
+    #modalAdd .modalContainer .single-pro-details span {
+        display: none;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .quantityModal .itemQuantityModal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details button {
+        width: 80%;
+        height: auto;
+        margin-top: 15px;
+    }
+    /* Modal End */
     /* Banner Start */
     #banner {
         height: 25vh;
@@ -2027,8 +2237,9 @@ footer .copyright p {
     }
 
     #sm-banner .banner-box {
-        min-width: 100%;
+        min-width: 97.5%;
         height: 30vh;
+        margin: 10px;
         background-position: bottom;
     }
 
@@ -2038,8 +2249,8 @@ footer .copyright p {
     }
 
     #banner3 .banner-box {
-        width: 33.3%;
-        margin-bottom: 0;
+        width: 30.7%;
+        margin: 10px;
     }
     /* Call to action End */
     /* Newsletter Start */
@@ -2119,10 +2330,22 @@ footer .col.appFooter.install {
 /* Contact Page End */
 }
 
-@media (min-width: 768px) and (max-width: 920px) {
+@media (min-width: 769px) and (max-width: 920px) {
     .section-p1 {
         padding: 35px 70px;
     }
+
+    /* Cart Start */
+    .shopping-cart {
+        width: 65%;
+        top: 60px;
+        right: 0;
+    }
+
+    .shopping-cart-items .clearfix .productDetailsCart {
+        padding-top: 38px;
+    }
+    /* Cart End */
 
     #hero {
         background-position: top 25% right 40%;
@@ -2136,6 +2359,108 @@ footer .col.appFooter.install {
     #product1 .pro-container #cardsArrivals {
         justify-content: space-around;
         padding: 0;
+    }
+    /* Modal Start */
+    #modalAdd.modal {
+        padding: 100px 40px 25px;
+    }
+
+    #modalAdd .modalContainer {
+        width: 100%;
+        padding: 45px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .imageProduct {
+        width: 85%;
+        height: 62%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details #cartImage {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    #modalAdd .modalContainer .single-pro-details h6 {
+        height: auto;
+        width: 90%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details h4 {
+        height: auto;
+        width: 90%;
+        justify-content: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details #priceContainerModal {
+        width: 90%;
+        height: auto;
+        justify-content: center;
+    }
+
+    #modalAdd .modalContainer .single-pro-details #priceContainerModal h2#currencyModal {
+        width: auto;
+        height: auto;
+        margin: 0 5px 0 0;
+    }
+
+    #modalAdd .modalContainer .single-pro-details #priceContainerModal h2 {
+        width: auto;
+        height: auto;
+        margin: 0;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .selectSize {
+        width: 41%;
+        height: auto;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details button {
+        width: 40%;
+        height: 8%;
+    }
+
+    #modalAdd .modalContainer .single-pro-details h4.proDetails,
+    #modalAdd .modalContainer .single-pro-details span {
+        display: none;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .quantityModal {
+        height: auto;
+        width: 50%;
+        justify-content: center;
+        align-content: center;
+        margin-bottom: 10px;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .quantityModal h6 {
+        padding: 0;
+        margin: 0;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .quantityModal .itemQuantityModal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    /* Modal End */
+    /* Banner Start */
+    #sm-banner {
+        padding: 10px 70px;
     }
 
     #sm-banner .banner-box {
@@ -2153,12 +2478,95 @@ footer .col.appFooter.install {
 
     #banner3 .banner-box {
         width:49%;
-        margin-left: 10px;
     }
 
     #banner3 .banner-box3 {
         background-image: url('../img/banner/b18.jpg');
         width: 100%;
+    }
+    /* Banner End */
+    /* Newsletter Start */
+    #newsletter {
+        justify-content: center;
+    }
+
+    #newsletter .news-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #newsletter .form {
+        display: flex;
+        width: 65%;
+    }
+    /* Newsletter End */
+    /* footer Start */
+    footer h4 .usFollow {
+        padding-bottom: 10px;
+    }
+
+    footer .follow {
+        margin-bottom: 10px;
+    }
+    /* footer End */
+}
+
+@media (min-width: 921px) and (max-width: 1024px) {
+    .shopping-cart {
+        width: 45%;
+    }
+
+    #feature {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    #feature .fe-box {
+        margin: 15px 30px;
+    }
+
+    #product1 .pro-container #cards {
+        justify-content: center;
+    }
+
+    #product1 .pro {
+        margin: 15px;
+    }
+
+    #sm-banner {
+        padding: 15px 80px;
+    }
+
+    #sm-banner .banner-box {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    #banner3 .banner-box {
+        width: 30%;
+        margin: 0;
+    }
+
+    #modalAdd .modalContainer {
+        width: 100%;
+    }
+
+    #modalAdd .modalContainer .single-pro-details {
+        justify-items: start;
+        grid-template-columns: 50% 25% 25%;
+    }
+
+    #modalAdd .modalContainer .single-pro-details #cartImage {
+        max-width: 100%;
+        min-width: 80%;
+        min-height: 80%;
+        max-height: 100%;
+    }
+
+    #modalAdd .modalContainer .single-pro-details .quantityModal h6 {
+        display: none;
     }
 }
 
