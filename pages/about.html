@@ -13,6 +13,7 @@
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.css" integrity="sha512-9nqhm3FWfB00id4NJpxK/wV1g9P2QfSsEPhSSpT+6qrESP6mpYbTfpC+Jvwe2XY27K5mLwwrqYuzqMGK5yC9/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- stylesheets -->
+    <link rel="icon" href="../img/logo/IconMalmo.png">
     <link rel="stylesheet" href="../styles/style.css">
     <title>About Us - Malmö Clothes</title>
 </head>
@@ -23,8 +24,8 @@
         <ul id="navbar">
             <li><a href="../index.html">Home</a></li>
             <li><a href="./shop.html">Shop</a></li>
-            <li><a class="active"  href="./blog.html">Blog</a></li>
-            <li><a href="./about.html">About</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a class="active" href="./about.html">About</a></li>
             <li><a href="./contact.html">Contact</a></li>
             <button id="bag" class="navbar-right normal" onclick="openBag()">
                 <li><a href="#"><i id="totalBag" class="fa fa-shopping-cart"></i><span id="numberOfProducts" class="badge">0</span></a></li>
@@ -64,7 +65,8 @@
                             <button id="remove" class="normal remove"><img src="../img/icons/cancel.png" alt="delete" class="delete"></button>
                         </div>
                         <div class="imageProduct">
-                            <img src="./img/products/f1.jpg" alt="item1" id="imgCart"/>
+                            <img src="${product.image}" alt="${product.name}" class="principalProduct" style="display: flex;">
+                            <img src="${product.image}" alt="${product.name}" class="imgOtherPage" style="display: none;">
                         </div>
                         <div class="productDetailsCart">
                             <h6 class="item-name">Sunflowers Shirt</h6>

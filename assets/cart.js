@@ -305,17 +305,21 @@ const closeBag = () => {
 const btnAction = e => {
     //substract
     if (e.target.classList.contains('subtractQuantity')) {
-        cart.find(el => el.id == e.target.dataset.id).quantity = (cart.find(el => el.id == e.target.dataset.id).quantity - 1);
-        if(cart.find(el => el.id == e.target.dataset.id).quantity === 0) {
-            const positionSubstract = cart.indexOf(cart.find( el => el.id == e.target.dataset.id));
-            cart.splice(positionSubstract, 1);
+        const valueId = e.target.dataset.id;
+        let separateId = valueId.split(',');
+        cart.find(el => el.id == separateId[0] && el.size == separateId[1]).quantity = (cart.find(el => el.id == separateId[0] && el.size == separateId[1]).quantity - 1);
+        if(cart.find(el => el.id == separateId[0] && el.size == separateId[1]).quantity === 0) {
+            let position = cart.indexOf(cart.find(el => el.id == separateId[0] && el.size == separateId[1]));
+            cart.splice(position, 1);
         }
         showCart();
     }
 
     //Add
     if (e.target.classList.contains('addQuantity')) {
-        cart.find(el => el.id == e.target.dataset.id).quantity = (cart.find(el => el.id == e.target.dataset.id).quantity + 1);
+        const valueId = e.target.dataset.id;
+        let separateId = valueId.split(',');
+        cart.find(el => el.id == separateId[0] && el.size == separateId[1]).quantity = (cart.find(el => el.id == separateId[0] && el.size == separateId[1]).quantity + 1);
         showCart();
     }
 }
