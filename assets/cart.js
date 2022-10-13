@@ -51,7 +51,7 @@ if (close) {
 }
 
 const fetchData = async () => {
-    fetch('../assets/data.json')
+    fetch('./assets/data.json')
         .then(res => res.json())
         .then(data => {
             showFeatured(data);
