@@ -78,7 +78,7 @@ const showFeatured = data => {
         templateCard.querySelector('#currencyFeatures').textContent = product.currency;
         templateCard.querySelector('#priceFeatures').textContent = product.price;
         templateCard.querySelector('img').setAttribute("src", product.image);
-        templateCard.querySelector('.imgOtherPage').setAttribute("src", ('.' + product.image));
+        templateCard.querySelector('.imgOtherPage').setAttribute("src", product.image);
         templateCard.querySelector('#btnSetModal').dataset.id = product.id;
         templateCard.querySelector('h6').textContent = product.category;
 
@@ -96,7 +96,7 @@ const showArrivals = data => {
         templateCard.querySelector('#currencyFeatures').textContent = product.currency;
         templateCard.querySelector('#priceFeatures').textContent = product.price;
         templateCard.querySelector('img').setAttribute("src", product.image);
-        templateCard.querySelector('.imgOtherPage').setAttribute("src", ('.' + product.image));
+        templateCard.querySelector('.imgOtherPage').setAttribute("src", product.image);
         templateCard.querySelector('#btnSetModal').dataset.id = product.id;
         templateCard.querySelector('h6').textContent = product.category;
 
