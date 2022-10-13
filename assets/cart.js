@@ -62,6 +62,8 @@ const fetchData = async () => {
         }));
 }
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchData();
     if(localStorage.getItem('cart')) {
@@ -77,8 +79,8 @@ const showFeatured = data => {
         templateCard.querySelector('h5').textContent = product.name;
         templateCard.querySelector('#currencyFeatures').textContent = product.currency;
         templateCard.querySelector('#priceFeatures').textContent = product.price;
-        templateCard.querySelector('img').setAttribute("src", product.image);
-        templateCard.querySelector('.imgOtherPage').setAttribute("src", product.image);
+        templateCard.querySelector('img').setAttribute("src",  product.image);
+        templateCard.querySelector('.imgOtherPage').setAttribute("src", ('.' + product.image));
         templateCard.querySelector('#btnSetModal').dataset.id = product.id;
         templateCard.querySelector('h6').textContent = product.category;
 
@@ -95,8 +97,8 @@ const showArrivals = data => {
         templateCard.querySelector('h5').textContent = product.name;
         templateCard.querySelector('#currencyFeatures').textContent = product.currency;
         templateCard.querySelector('#priceFeatures').textContent = product.price;
-        templateCard.querySelector('img').setAttribute("src", product.image);
-        templateCard.querySelector('.imgOtherPage').setAttribute("src", product.image);
+        templateCard.querySelector('img').setAttribute("src",  product.image);
+        templateCard.querySelector('.imgOtherPage').setAttribute("src", ('.' + product.image));
         templateCard.querySelector('#btnSetModal').dataset.id = product.id;
         templateCard.querySelector('h6').textContent = product.category;
 
@@ -119,6 +121,7 @@ const setModal = Object => {
         id: Object.querySelector('#btnSetModal').dataset.id,
         title: Object.querySelector('h5').textContent,
         image: Object.querySelector('img').attributes[0].nodeValue,
+        image2: Object.querySelector('.imgOtherPage').attributes[0].nodeValue,
         price: Object.querySelector('#priceFeatures').textContent,
         currency: Object.querySelector('#currencyFeatures').textContent,
         quantity: 1,
@@ -141,6 +144,7 @@ const showModals = () => {
         templateModal.querySelector('#currencyModal').textContent = productModal.currency;
         templateModal.querySelector('#priceModal').textContent = productModal.price;
         templateModal.querySelector('img').setAttribute("src", productModal.image);
+        templateModal.querySelector('.imageRemplace').setAttribute("src", '.' + productModal.image);
         templateModal.querySelector('#btnAddToCart').dataset.id = productModal.id;
 
         // buttons add and remove
@@ -170,7 +174,8 @@ const setCart = Object => {
     let product = {
         id: Object.querySelector('#btnAddToCart').dataset.id,
         title: Object.querySelector('h4').textContent,
-        imagecart: Object.querySelector('img').attributes[0].nodeValue,
+        image: Object.querySelector('img').attributes[0].nodeValue,
+        image2: Object.querySelector('.imageRemplace').attributes[0].nodeValue,
         price: Object.querySelector('#priceModal').textContent,
         currency: Object.querySelector('#currencyModal').textContent,
         quantity: parseFloat(Object.querySelector('span').textContent),
@@ -212,7 +217,8 @@ const showCart = () => {
     cart.forEach(product => {
         templateCart.querySelector('h6').textContent = product.title,
         templateCart.querySelector('.item-quantity').textContent = product.quantity,
-        templateCart.querySelector('#imgCart').setAttribute("src", product.imagecart),
+        templateCart.querySelector('#imgCart').setAttribute("src", product.image),
+        templateCart.querySelector('#imgCartRemplace').setAttribute("src", product.image2),
         templateCart.querySelector('#cartCurrency').textContent = product.currency,
         templateCart.querySelector('#cartPrice').textContent = (product.price * product.quantity).toFixed(2),
         templateCart.querySelector('#cartSize').textContent = 'Size: ' + product.size,

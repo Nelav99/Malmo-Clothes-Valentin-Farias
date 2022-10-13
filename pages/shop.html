@@ -61,6 +61,7 @@
                     <li class="clearfix">
                         <div class="btnRemove">
                             <button id="remove" class="normal remove"><img src="../img/icons/cancel.png" alt="delete" class="delete"></button>
+                            <img src="./img/products/f1.jpg" alt="item1" id="imgCartRemplace" style="display: none;"/>
                         </div>
                         <div class="imageProduct">
                             <img src="../img/products/f1.jpg" alt="item1" id="imgCart"/>
@@ -108,7 +109,8 @@
         <template id="template-card">
             <div class="pro">
                 <div id="btnOpenPopUp" class="openProductDetails">
-                    <img src="${product.image}" alt="${product.name}">
+                    <img src="${product.image}" alt="${product.name}" class="principalProduct" style="display: none;">
+                    <img src="${product.image}" alt="${product.name}" class="imgOtherPage" style="display: flex;">
                     <div class="des">
                         <span>${product.create}</span>
                         <h5>${product.name}</h5>
@@ -140,7 +142,8 @@
                 </div>
                 <div class="single-pro-details">
                     <div class="imageProduct">
-                        <img src="./img/products/f1.jpg" id="cartImage" class="imageProdCart" alt="Product Image">
+                        <img src="./img/products/f1.jpg" id="cartImage" class="imageProdCart" alt="Product Image" style="display: none;">
+                        <img src="./img/products/f1.jpg" id="imageRemplace" class="imageRemplace" alt="Product Image" style="display: flex;">
                     </div>
                     <h5 style="display: none;">Shirt</h5>
                     <h6>Home / Shirts</h6>

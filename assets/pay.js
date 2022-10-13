@@ -11,7 +11,7 @@ const showNumberOfProducts = () =>{ numberOfProducts.innerText = cart.length;}
 const showProductsToPay = () => {
     productRow.innerHTML = '';
     cart.forEach(product => {
-        templatePay.querySelector('#imgCart').setAttribute("src", '..' + product.imagecart),
+        templatePay.querySelector('#imgCart').setAttribute("src", product.image2),
         templatePay.querySelector('#nameProductToPay').textContent = product.title,
         templatePay.querySelector('#sizeProductToPay').textContent = product.size,
         templatePay.querySelector('#priceProductToPay').textContent = product.currency + product.price,
