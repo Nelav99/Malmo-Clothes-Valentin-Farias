@@ -147,7 +147,8 @@ img.logo {
     left: 20px;
 }
 
-#navbar #bag {
+#navbar #bag,
+#mobile #bag {
     background-color: transparent;
     padding: 5px;
     color: #222;
@@ -230,7 +231,7 @@ img.logo {
     }
 
     .shopping-cart::-webkit-scrollbar {
-        -webkit-appearance: none;
+        appearance: none;
         color: rgba(0, 0, 0, 0.01);
         background-color: rgba(0, 0, 0, 0.01);
         position: absolute;
@@ -615,6 +616,10 @@ img.logo {
     #product1 .pro img {
         width: 100%;
         border-radius: 20px;
+    }
+    
+    #product1 .pro img.imgOtherPage {
+        display: none;
     }
 
     #product1 .pro .des {
@@ -1304,7 +1309,8 @@ img.logo {
 /* About Page Start*/
     /* Hero Image Start */
     #page-header.about-header {
-        background-image: url('../img/about/banner.png');
+        background-image: url('../img/about/banner2.png');
+        background-position: center;
     }
     /* Hero Image End */
     /* Content About Start */
@@ -1342,6 +1348,9 @@ img.logo {
 /* About Page End*/
 
 /* Contact Page Start*/
+    #page-header.contactHero {
+        background-image: url('../img/about/bannerContact.png');
+    }
     /* Map Section Start */
     #contact-details {
         display: flex;
@@ -1454,6 +1463,9 @@ img.logo {
     /* Form Section End */
 /* Contact Page End*/
 /* Cart Page Start*/
+    #page-header.cartHero {
+        background-image: url('../img/about/bannerCart.png');
+    }
     /* Products Table Start */
     #cart {
         overflow-x: auto;
@@ -1463,10 +1475,12 @@ img.logo {
         border-collapse: collapse;
         table-layout: fixed;
         white-space: nowrap;
+        box-shadow: 0 10px 20px rgb(0 0 0 / 15%);
     }
 
     #cart table img {
-        width: 70px;
+        width: 50px;
+        border-radius: 5px;
     }
 
     #cart table td:nth-child(1) {
@@ -1507,6 +1521,7 @@ img.logo {
         text-transform: uppercase;
         font-size: 14px;
         padding: 18px 0;
+        text-align: center;
     }
 
     #cart table tbody tr td {
@@ -1515,6 +1530,73 @@ img.logo {
 
     #cart table tbody td {
         font-size: 14px;
+    }
+
+    #cart table tbody td button#remove {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #cart table img.delete {
+        width: 24px;
+    }
+
+    #cart table tbody td input#quantity {
+        width: 50px;
+        height: 38px;
+        text-align: center;
+    }
+
+    #cart table tbody tr td#subtotalProductToPay {
+        text-align: center;
+    }
+
+    #cart table tbody td div#empty {
+        position: absolute;
+        right: 45%;
+        left: 45%;
+    }
+
+    #cart table tbody td #empty span {
+        color: gray;
+        font-size: 16px;
+    }
+
+    .shoppingCartItemsContainer .quantity button.subtractQuantity {
+        padding: 5px 10px;
+        background-color: rgb(179, 36, 36);
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer;
+        color: #fff;
+        border: none;
+        margin: 0;
+        width: 35px;
+        height: 35px;
+    }
+
+    .shoppingCartItemsContainer .quantity button.addQuantity {
+        padding: 5px 10px;
+        background-color: rgb(9, 97, 9);
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer;
+        color: #fff;
+        border: none;
+        width: 35px;
+        height: 35px;
+        margin: 0px;
+    }
+
+    .shoppingCartItemsContainer .quantity span.item-quantity {
+        padding: 5px 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        text-align: center;
     }
     /* Products Table End */
     /* Apply Coupon Start */
@@ -1527,6 +1609,23 @@ img.logo {
     #coupon {
         width: 50%;
         margin-bottom: 30px;
+        background-image: url(../img/banner/b17.jpg);
+        background-position: right;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 30px;
+        box-shadow: 0 10px 20px rgb(0 0 0 / 15%);
+    }
+
+    #coupon h2 {
+        color: white;
+        padding-bottom: 15px;
+    }
+
+    #coupon .inputCoupon {
+        width: 100%;
     }
 
     #coupon h3,
@@ -1537,7 +1636,7 @@ img.logo {
     #coupon input {
         padding: 10px 20px;
         outline: none;
-        width: 60%;
+        width: 70%;
         margin-right: 10px;
         border: 1px solid #e2e9e1;
     }
@@ -1549,11 +1648,16 @@ img.logo {
         padding: 12px 20px;
     }
 
+    #coupon button {
+        width: 25%;
+    }
+
     #subtotal {
         width: 50%;
         margin-bottom: 30px;
         border: 1px solid #e2e9e1;
         padding: 30px;
+        box-shadow: 0 10px 20px rgb(0 0 0 / 15%);
     }
 
     #subtotal table{

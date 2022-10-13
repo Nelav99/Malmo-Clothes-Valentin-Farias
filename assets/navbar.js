@@ -1,35 +1,16 @@
-const cards = document.getElementById('cards');
 const items = document.getElementById('items');
-const total = document.getElementById('total');
-const cartShowContainer = document.getElementById('shoppingCart');
-const shoppingCartOutsideClick = document.getElementById('cartContainer');
-const modalShow = document.getElementById('modalAdd');
-const buttonAddToCart = document.getElementById('btnSetModal');
-const cardsArrivals = document.getElementById('cardsArrivals');
-const templateCard = document.getElementById('template-card').content;
-const templateModal = document.getElementById('template-modal').content;
-const templateCart = document.getElementById('template-shopping-cart').content;
-const fragment = document.createDocumentFragment();
 const bar = document.getElementById('bar');
 const close = document.getElementById('close');
 const nav = document.getElementById('navbar');
-let cart = [];
-let modalObject = [];
-let modalVariation = [];
+let numberOfProducts = document.querySelector('#numberOfProducts');
+const cartShowContainer = document.getElementById('shoppingCart');
+const templateCart = document.getElementById('template-shopping-cart').content;
+const fragment = document.createDocumentFragment();
+const data = JSON.parse(localStorage.getItem('cart'));
 
-cards.addEventListener('click', e => {
-    showProductModal(e);
-});
+const cart = [...data];
 
-cardsArrivals.addEventListener('click', e => {
-    showProductModal(e);
-});
-
-modalShow.addEventListener('click', e => {
-    addToCart(e);
-    clickOutside(e);
-    quantityModal(e);
-});
+numberOfProducts.innerText = cart.length;
 
 items.addEventListener('click', e => {
     btnAction(e);
@@ -50,119 +31,6 @@ if (close) {
     });
 }
 
-const fetchData = async () => {
-    fetch('./data.json')
-        .then(res => res.json())
-        .then(data => {
-            showFeatured(data);
-            showArrivals(data);
-        })
-        .catch((error => {
-            console.log(error);
-        }));
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    fetchData();
-    if(localStorage.getItem('cart')) {
-        cart = JSON.parse(localStorage.getItem('cart'));
-        showCart();
-    }
-});
-
-const showFeatured = data => {
-    const features = data.slice(0, 8);
-    features.forEach(product => {
-        templateCard.querySelector('span').textContent = product.create;
-        templateCard.querySelector('h5').textContent = product.name;
-        templateCard.querySelector('#currencyFeatures').textContent = product.currency;
-        templateCard.querySelector('#priceFeatures').textContent = product.price;
-        templateCard.querySelector('img').setAttribute("src", product.image);
-        templateCard.querySelector('#btnSetModal').dataset.id = product.id;
-        templateCard.querySelector('h6').textContent = product.category;
-
-        const clone = templateCard.cloneNode(true);
-        fragment.appendChild(clone);
-    });
-    cards.appendChild(fragment);
-}
-
-const showArrivals = data => {
-    const arrivals = data.slice(8, 20);
-    arrivals.forEach(product => {
-        templateCard.querySelector('span').textContent = product.create;
-        templateCard.querySelector('h5').textContent = product.name;
-        templateCard.querySelector('#currencyFeatures').textContent = product.currency;
-        templateCard.querySelector('#priceFeatures').textContent = product.price;
-        templateCard.querySelector('img').setAttribute("src", product.image);
-        templateCard.querySelector('#btnSetModal').dataset.id = product.id;
-        templateCard.querySelector('h6').textContent = product.category;
-
-        const clone = templateCard.cloneNode(true);
-        fragment.appendChild(clone);
-    });
-    cardsArrivals.appendChild(fragment);
-}
-
-// Show Modal
-const showProductModal = e => {
-    if(e.target.classList.contains('viewDetails')) {
-        setModal(e.target.parentElement)
-    }
-    e.stopPropagation();
-}
-
-const setModal = Object => {
-    const productModal = {
-        id: Object.querySelector('#btnSetModal').dataset.id,
-        title: Object.querySelector('h5').textContent,
-        image: Object.querySelector('img').attributes[0].nodeValue,
-        price: Object.querySelector('#priceFeatures').textContent,
-        currency: Object.querySelector('#currencyFeatures').textContent,
-        quantity: 1,
-        category: Object.querySelector('h6').textContent,
-    }
-
-    if(modalObject.hasOwnProperty(productModal.id)) {
-        productModal.quantity = productModal.quantity + 1;
-    }
-
-    modalObject.push(productModal.id = {...productModal});
-    showModals();
-}
-
-const showModals = () => {
-    modalShow.innerHTML = '';
-    modalObject.forEach(productModal => {
-        templateModal.querySelector('h6').textContent = 'Home / ' + productModal.category;
-        templateModal.querySelector('h4').textContent = productModal.title;
-        templateModal.querySelector('#currencyModal').textContent = productModal.currency;
-        templateModal.querySelector('#priceModal').textContent = productModal.price;
-        templateModal.querySelector('img').setAttribute("src", productModal.image);
-        templateModal.querySelector('#btnAddToCart').dataset.id = productModal.id;
-
-        // buttons add and remove
-        templateModal.querySelector('.subtractQuantityModal').dataset.id = productModal.id,
-        templateModal.querySelector('.addQuantityModal').dataset.id = productModal.id,
-
-        valueIdModificate = productModal.id;
-        const clone = templateModal.cloneNode(true);
-        fragment.appendChild(clone);
-    });
-
-    modalShow.appendChild(fragment);
-    modalVariation.push(modalObject.find(el => el.id == valueIdModificate));
-    modalObject = [];
-}
-
-// show Cart
-const addToCart = e => {
-    if(e.target.classList.contains('addToCart')) {
-        setCart(e.target.parentElement);
-    }
-
-    e.stopPropagation();
-}
 
 let productOut;
 const setCart = Object => {
@@ -172,7 +40,7 @@ const setCart = Object => {
         imagecart: Object.querySelector('img').attributes[0].nodeValue,
         price: Object.querySelector('#priceModal').textContent,
         currency: Object.querySelector('#currencyModal').textContent,
-        quantity: 1,
+        quantity: Object.querySelector('span').textContent,
         size: Object.querySelector('select').value,
         idSizeValue: 0
     }
@@ -180,8 +48,6 @@ const setCart = Object => {
     product.idSizeValue = product.id + product.size;
 
     cart.find(el => el.id == product.id && el.size == product.size) ? cart.find(el => el.id == product.id && el.size == product.size).quantity++ : cart.push({ ...product });
-
-    // cart.find(el => el.id == 2 && el.size == 'S').quantity = cart.find(el => el.id == 2 && el.size == 'S').quantity + 1;
 
     if(cart.some(el => el.size == "Select Size")){
         if(cart.find(el => el.size == "Select Size")) {
@@ -208,8 +74,26 @@ const setCart = Object => {
     showCart();
 }
 
+const showTotalPrice = () => {
+    const totalContainer = document.getElementById('totalContainer');
+    totalContainer.innerHTML = "";
+
+    if(cart.length === 0) {
+        totalContainer.innerHTML = '<span id="totalCart" class="main-color-text">$0.00</span>'
+    }
+
+    const totalPriceShow = Object.values(cart).reduce((acc, {quantity, price}) => acc + Number(quantity) * Number(price), 0).toFixed (2);
+
+    const quantityPrice = Object.values(cart).reduce((acc, {quantity}) => acc + quantity, 0);
+
+    if(cart.length != 0) {
+        totalContainer.innerHTML = `<span class="lighter-text">Total:</span>
+        <span id="totalCart" class="main-color-text">$${totalPriceShow}</span>`
+    }
+
+}
+
 const showCart = () => {
-    // console.log(cart);
     items.innerHTML = '';
     cart.forEach(product => {
         templateCart.querySelector('h6').textContent = product.title,
@@ -246,44 +130,7 @@ const showCart = () => {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-const showTotalPrice = () => {
-    const totalContainer = document.getElementById('totalContainer');
-    totalContainer.innerHTML = "";
-
-    if(cart.length === 0) {
-        totalContainer.innerHTML = '<span id="totalCart" class="main-color-text">$0.00</span>'
-    }
-
-    const totalPriceShow = Object.values(cart).reduce((acc, {quantity, price}) => acc + Number(quantity) * Number(price), 0).toFixed (2);
-
-    const quantityPrice = Object.values(cart).reduce((acc, {quantity}) => acc + quantity, 0);
-
-    if(cart.length != 0) {
-        totalContainer.innerHTML = `<span class="lighter-text">Total:</span>
-        <span id="totalCart" class="main-color-text">$${totalPriceShow}</span>`
-    }
-
-}
-
-// PopUp Start
-const modalAdd = document.querySelector('#btnSetModal');
-const containerModal = document.querySelector('#modalAdd');
-
-const openModal = () => {
-    containerModal.style.display = 'flex';
-}
-
-const closeModal = () => {
-    containerModal.style.display = 'none';
-}
-
-function clickOutside(e){
-    // console.log(e.target.classList.contains('modal'));
-    containerModal.addEventListener('click', e => {
-        e.target.classList.contains('modal') || e.target.classList.contains('closeModal') ? containerModal.style.display = 'none' : containerModal.style.display = 'flex';
-    });
-}
-// PopUp End
+showCart();
 
 // Cart Open Start
 const containerBag = document.querySelector('#cartContainer');
@@ -295,8 +142,6 @@ const openBag = () => {
 const closeBag = () => {
     containerBag.style.display = 'none';
 }
-
-//Cart Open End
 
 // buttons add and remove quantity
 const btnAction = e => {
@@ -320,7 +165,6 @@ const btnAction = e => {
 const btnRemove = e => {
     // Delete
     if(e.target.classList.contains('remove') || e.target.classList.contains('delete')) {
-        // console.log(e.target.dataset.id);
         const valueId = e.target.dataset.id;
         let separateId = valueId.split(',');
         if(cart.find(el => el.id == separateId[0] && el.size == separateId[1])) {
@@ -334,7 +178,6 @@ const btnRemove = e => {
 }
 
 const quantityModal = e => {
-    // console.log(e.target.dataset.id);
     if (e.target.dataset.id != undefined) {
         const containerModalId = modalVariation.find(el => el.id == e.target.dataset.id);
         let containerModalQuantity = containerModalId.quantity;

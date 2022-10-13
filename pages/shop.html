@@ -20,23 +20,76 @@
     <!-- NavBar Start -->
     <section id="header">
         <a class="imgL" href="#"> <img src="../img/logo/Malmo.png" class="logo" alt="Malmo Logo"></a>
-        <div>
-            <ul id="navbar">
-                <li><a href="../index.html">Home</a></li>
-                <li><a class="active" href="#">Shop</a></li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="./cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
-                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-            </ul>
-        </div>
+        <ul id="navbar">
+            <li><a href="../index.html">Home</a></li>
+            <li><a class="active" href="./shop.html">Shop</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <button id="bag" class="navbar-right normal" onclick="openBag()">
+                <li><a href="#"><i id="totalBag" class="fa fa-shopping-cart"></i><span id="numberOfProducts" class="badge">0</span></a></li>
+            </button>
+            <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+        </ul>
         <div id="mobile">
-            <a href="./pages/cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <button id="bag" class="navbar-right normal" onclick="openBag()">
+                <li><a href="#"><i id="totalBag" class="fa fa-shopping-cart"></i><span id="numberOfProducts" class="badge">0</span></a></li>
+            </button>
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </section>
     <!-- NavBar End -->
+
+    <!-- Cart Start-->
+    <section id="cartContainer" class="cartContainer">
+        <!-- products of cart -->
+        <div id="shoppingCart" class="shopping-cart">
+            <div id="total" class="shopping-cart-header">
+                <span>Products: </span>
+                <div id="totalContainer" class="shopping-cart-total">
+                    <span class="lighter-text">Total:</span>
+                    <span id="totalCart" class="main-color-text">$0.00</span>
+                </div>
+            </div> <!--end shopping-cart-header -->
+
+            <div id="items" class="cartEmpty">
+                <span>Your cart is empty</span>
+            </div>
+
+            <template id="template-shopping-cart">
+                <ul class="shopping-cart-items">
+                    <li class="clearfix">
+                        <div class="btnRemove">
+                            <button id="remove" class="normal remove"><img src="../img/icons/cancel.png" alt="delete" class="delete"></button>
+                        </div>
+                        <div class="imageProduct">
+                            <img src="../img/products/f1.jpg" alt="item1" id="imgCart"/>
+                        </div>
+                        <div class="productDetailsCart">
+                            <h6 class="item-name">Sunflowers Shirt</h6>
+                            <div id="priceContainerCart">
+                                <h4 id="cartCurrency" class="item-price">$ </h4>
+                                <h4 id="cartPrice" class="item-price">ff</h4>
+                            </div>
+                            <h6 id="cartSize" class="item-size">Size:</h6>
+                            <div class="quantity">
+                                <button class="subtractQuantity">-</button>
+                                <span class="item-quantity">01</span>
+                                <button class="addQuantity">+</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </template>
+            <div class="shopping-checkout">
+                <button id="closeBag" class="normal closeBag" onclick="closeBag()">Close</button>
+                <form action="./cart.html">
+                    <button id="checkoutBag" type="submit" class="normal">Checkout</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Cart End -->
 
     <!-- Hero Image -->
     <section id="page-header">
@@ -47,328 +100,78 @@
 
     <!-- Products Start -->
     <section id="product1" class="section-p1">
-        <div class="pro-container">
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/f1.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Sunflowers Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$38.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/f2.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Coconut Beach Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$38.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/f3.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>C´est La Vie T-shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$18.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/f4.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Mawi T-hirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$18.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/f5.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Pineapple Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$38.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/f6.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Multi-Brown Jacket</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$52.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/f7.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Stockholm Jacket</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$52.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/f8.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Classic Trousers</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$25.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n1.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Chest Pocket T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$38.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n2.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Two-Tone Pants</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$24.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n3.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Casual Loose Pants</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$24.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n4.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Striped Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$38.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n5.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Pineapple Set</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$58.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n6.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Multi-Lines Set</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$58.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n7.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Sunflower Up Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$38.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n8.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Sun & Moon Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$38.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n9.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Three Color T-Shirt</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$22.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n10.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Color Curve T-Shirt</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$22.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n11.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>Tomorrow T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$24.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
-            </div>
-            <div class="pro" onclick="openProduct()">
-                <img src="../img/products/n12.jpg" alt="T-shirt">
-                <div class="des">
-                    <span>Malmö</span>
-                    <h5>NASA T-Shirt</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$24.99</h4>
-                </div>
-                <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
+        <div id="containerProd" class="pro-container">
+            <div id="cards">
+                <!-- Products add in JS -->
             </div>
         </div>
+        <template id="template-card">
+            <div class="pro">
+                <div id="btnOpenPopUp" class="openProductDetails">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="des">
+                        <span>${product.create}</span>
+                        <h5>${product.name}</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div id="priceContainerFeatures">
+                            <h4 id="currencyFeatures">$ </h4>
+                            <h4 id="priceFeatures">{product.price}</h4>
+                        </div>
+                        <h6 style="display: none;">${product.category}</h6>
+                    </div>
+                    <button id="btnSetModal" class="normal viewDetails" onclick="openModal()">Add To Cart</button>
+                </div>
+            </div>
+        </template>
+        <div id="modalAdd" class="modal">
+            <!-- Modal add in JS -->
+            <span>Not Found</span>
+        </div>
+        <template id="template-modal">
+            <div id="modalDetailsContainer" class="modalContainer">
+                <div class="closeModal" onclick="closeModal()">
+                    <i class="fa-solid fa-xmark closeModal" onclick="closeModal()"></i>
+                </div>
+                <div class="single-pro-details">
+                    <div class="imageProduct">
+                        <img src="./img/products/f1.jpg" id="cartImage" class="imageProdCart" alt="Product Image">
+                    </div>
+                    <h5 style="display: none;">Shirt</h5>
+                    <h6>Home / Shirts</h6>
+                    <h4>Sunflowers Shirts</h4>
+                    <div id="priceContainerModal">
+                        <h2 id="currencyModal">$ </h2>
+                        <h2 id="priceModal">{product.price}</h2>
+                    </div>
+                    <div class="selectSize">
+                        <select name="size" id="sizeSelect" placeholder="Select Size" required>
+                            <option value="Select Size" selected disabled>Select Size</option>
+                            <option value="XS" id="sizeValue" class="xs">XS</option>
+                            <option value="S" id="sizeValue" class="s">S</option>
+                            <option value="M" id="sizeValue" class="m">M</option>
+                            <option value="L" id="sizeValue" class="l">L</option>
+                            <option value="XL" id="sizeValue" class="xl">XL</option>
+                            <option value="XXL" id="sizeValue" class="xxl">XXL</option>
+                        </select>
+                    </div>
+                    <div class="quantityModal">
+                        <h6>Quantity:</h6>
+                        <button class="subtractQuantityModal">-</button>
+                        <span class="itemQuantityModal">1</span>
+                        <button class="addQuantityModal">+</button>
+                    </div>
+                    <button id="btnAddToCart" class="normal addToCart">Add To Cart</button>
+                    <h4 class="proDetails">Product Details</h4>
+                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid debitis enim velit expedita dolorum culpa iure eaque possimus fuga.</span>
+                </div>
+            </div>
+        </template>
     </section>
     <!-- Products End -->
     <!-- Pagination Start -->
@@ -448,7 +251,7 @@
         </div>
     </footer>
     <!-- Footer End -->
-
-    <script src="../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
+    <script src="../assets/script.js"></script>
 </body>
 </html>

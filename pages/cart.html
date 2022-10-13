@@ -20,70 +20,71 @@
     <!-- NavBar Start -->
     <section id="header">
         <a class="imgL" href="#"> <img src="../img/logo/Malmo.png" class="logo" alt="Malmo Logo"></a>
-        <div>
-            <ul id="navbar">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="./shop.html">Shop</a></li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li id="lg-bag"><a class="active" href="./cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
-                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-            </ul>
-        </div>
+        <ul id="navbar">
+            <li><a href="../index.html">Home</a></li>
+            <li><a  href="./shop.html">Shop</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <button id="bag" class="navbar-right normal">
+                <li><a href="#" class="active"><i id="totalBag" class="fa fa-shopping-cart"></i><span id="numberOfProducts" class="badge">0</span></a></li>
+            </button>
+            <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+        </ul>
         <div id="mobile">
-            <a class="active" href="./cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <button id="bag" class="navbar-right normal" onclick="openBag()">
+                <li><a href="#"><i id="totalBag" class="fa fa-shopping-cart"></i><span id="numberOfProducts" class="badge">0</span></a></li>
+            </button>
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </section>
     <!-- NavBar End -->
 
     <!-- Hero Image -->
-    <section id="page-header" class="about-header">
-        <h2>#Let's_Talk</h2>
-        <p>LEAVE A MESSAGE. We love to hear from you!</p>
+    <section id="page-header" class="about-header cartHero">
+        <h2>#Your_Cart</h2>
+        <p>THANK YOU FOR CHOOSING MALMO!<br>We love to accompany you in your routine.</p>
     </section>
     <!-- Hero Image End -->
 
     <!-- Products Table Start -->
     <section id="cart" class="section-p1">
-        <table width="100%">
+        <table id="tableCartToPay" width="100%">
             <thead>
                 <tr>
-                    <!-- <td>Image</td> -->
                     <td>Remove</td>
+                    <td>Image</td>
                     <td>Product</td>
-                    <td>Quantily</td>
+                    <td>Size</td>
                     <td>Price</td>
-                    <!-- <td>Subtotal</td> -->
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
                 </tr>
             </thead>
-            <tbody class="shoppingCartItemsContainer">
-                <!-- <tr>
-                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td> <img src="../img/products/f1.jpg" alt=""></td>
-                    <td>Sunflowers Shirts</td>
-                    <td>$38.99</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$38.99</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td> <img src="../img/products/f2.jpg" alt=""></td>
-                    <td>Coconut Beach Shirts</td>
-                    <td>$38.99</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$38.99</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                    <td> <img src="../img/products/f3.jpg" alt=""></td>
-                    <td>C´est La Vie T-shirts</td>
-                    <td>$18.99</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$18.99</td>
-                </tr> -->
+            <tbody id="cartToPay" class="shoppingCartItemsContainer">
+                <td>
+                    <div id="empty">
+                        <span>Your cart is empty</span>
+                    </div>
+                </td>
             </tbody>
+            <template id="template-cart">
+                <tr>
+                    <td>
+                        <button id="remove" class="normal remove" data-id="${product.id}"><img src="../img/icons/cancel.png" alt="delete" class="delete" data-id="${product.id}"></button>
+                    </td>
+                    <td> <img src="../img/products/f2.jpg" alt="" id="imgCart"></td>
+                    <td id="nameProductToPay">${product.title}</td>
+                    <td id="sizeProductToPay">${product.size}</td>
+                    <td id="priceProductToPay">$${product.price}</td>
+                    <td class="quantity">
+                        <button class="subtractQuantity">-</button>
+                        <span class="item-quantity">01</span>
+                        <button class="addQuantity">+</button>
+                    </td>
+                    <td id="subtotalProductToPay">$${(product.price*product.quantity).toFixed(2)}</td>
+                </tr>
+            </template>
         </table>
     </section>
     <!-- Products Table End -->
@@ -91,8 +92,9 @@
     <!-- Apply Coupon Start -->
     <section id="cart-add" class="section-p1">
         <div id="coupon">
-            <h3>Apply Coupon</h3>
-            <div>
+            <h2>Summer Collection -50%</h2>
+            <h3>Apply Your Coupon</h3>
+            <div class="inputCoupon">
                 <input type="text" placeholder="Enter Your Coupon">
                 <button class="normal">Apply</button>
             </div>
@@ -102,21 +104,38 @@
             <table>
                 <tr>
                     <td>Cart Subtotal</td>
-                    <td>$ 96.97</td>
+                    <td class="subtotalPay">$ 96.97</td>
                 </tr>
                 <tr>
                     <td>Shipping</td>
                     <td>Free</td>
                 </tr>
                 <tr>
+                    <td>Taxes</td>
+                    <td class="taxesPay">Free</td>
+                </tr>
+                <tr>
                     <td><strong>Total</strong></td>
-                    <td><strong>$ 96.97</strong></td>
+                    <td><strong class="totalPay">$ 96.97</strong></td>
                 </tr>
             </table>
             <button class="normal buyButton">Procesed to checkout</button>
         </div>
     </section>
     <!-- Apply Coupon End -->
+
+    <!-- Newsletter Start -->
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="news-text">
+            <h4>Sign Up For Newsletter</h4>
+            <p>Get E-mail updates about oir latest shop and <span>special offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your Email Address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+    <!-- Newsletter End -->
 
     <!-- Footer Start -->
     <footer class="section-p1">
@@ -175,6 +194,7 @@
         </div>
     </footer>
     <!-- Footer End -->
-    <script src="../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
+    <script src="../assets/pay.js"></script>
 </body>
 </html>
