@@ -62,8 +62,6 @@ const fetchData = async () => {
         }));
 }
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
     fetchData();
     if(localStorage.getItem('cart')) {
@@ -224,8 +222,8 @@ const showCart = () => {
         templateCart.querySelector('#cartSize').textContent = 'Size: ' + product.size,
 
         // buttons add and remove
-        templateCart.querySelector('.subtractQuantity').dataset.id = product.id,
-        templateCart.querySelector('.addQuantity').dataset.id = product.id,
+        templateCart.querySelector('.subtractQuantity').dataset.id = product.id + ',' + product.size,
+        templateCart.querySelector('.addQuantity').dataset.id = product.id + ',' + product.size,
         templateCart.querySelector('.remove').dataset.id = product.id + ',' + product.size,
         templateCart.querySelector('.delete').dataset.id = product.id + ',' + product.size,
         templateCart.querySelector('#cartSize').dataset.id = product.idSizeValue
