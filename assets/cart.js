@@ -224,8 +224,8 @@ const showCart = () => {
         templateCart.querySelector('#cartSize').textContent = 'Size: ' + product.size,
 
         // buttons add and remove
-        templateCart.querySelector('.subtractQuantity').dataset.id = product.id,
-        templateCart.querySelector('.addQuantity').dataset.id = product.id,
+        templateCart.querySelector('.subtractQuantity').dataset.id = product.id + ',' + product.size,
+        templateCart.querySelector('.addQuantity').dataset.id = product.id + ',' + product.size,
         templateCart.querySelector('.remove').dataset.id = product.id + ',' + product.size,
         templateCart.querySelector('.delete').dataset.id = product.id + ',' + product.size,
         templateCart.querySelector('#cartSize').dataset.id = product.idSizeValue
@@ -300,12 +300,12 @@ const closeBag = () => {
 }
 
 //Cart Open End
-
-// buttons add and remove quantity
+// buttons add and remove quantity Cart
 const btnAction = e => {
     //substract
     if (e.target.classList.contains('subtractQuantity')) {
         const valueId = e.target.dataset.id;
+        console.log(valueId);
         let separateId = valueId.split(',');
         cart.find(el => el.id == separateId[0] && el.size == separateId[1]).quantity = (cart.find(el => el.id == separateId[0] && el.size == separateId[1]).quantity - 1);
         if(cart.find(el => el.id == separateId[0] && el.size == separateId[1]).quantity === 0) {
@@ -324,6 +324,7 @@ const btnAction = e => {
     }
 }
 
+// Button remove cart
 const btnRemove = e => {
     // Delete
     if(e.target.classList.contains('remove') || e.target.classList.contains('delete')) {
