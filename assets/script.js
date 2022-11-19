@@ -13,6 +13,7 @@ const fragment = document.createDocumentFragment();
 const bar = document.getElementById('bar');
 const close = document.getElementById('close');
 const nav = document.getElementById('navbar');
+const baseUrl = "https://raw.githubusercontent.com/Nelav99/Malmo-Clothes-Valentin-Farias/main"
 let cart = [];
 let modalObject = [];
 let modalVariation = [];
@@ -53,7 +54,7 @@ const fetchData = async () => {
             showProduct(data);
         })
         .catch((error => {
-            console.log(error);
+            console.error(error);
         }));
 }
 
@@ -72,8 +73,7 @@ const showProduct = data => {
         templateCard.querySelector('h5').textContent = product.name;
         templateCard.querySelector('#currencyFeatures').textContent = product.currency;
         templateCard.querySelector('#priceFeatures').textContent = product.price;
-        templateCard.querySelector('img').setAttribute("src",  product.image);
-        templateCard.querySelector('.imgOtherPage').setAttribute("src", ('.' + product.image));
+        templateCard.querySelector('img').setAttribute("src", `${baseUrl}${product.image}`);
         templateCard.querySelector('#btnSetModal').dataset.id = product.id;
         templateCard.querySelector('h6').textContent = product.category;
 
@@ -96,7 +96,6 @@ const setModal = Object => {
         id: Object.querySelector('#btnSetModal').dataset.id,
         title: Object.querySelector('h5').textContent,
         image: Object.querySelector('img').attributes[0].nodeValue,
-        image2: Object.querySelector('.imgOtherPage').attributes[0].nodeValue,
         price: Object.querySelector('#priceFeatures').textContent,
         currency: Object.querySelector('#currencyFeatures').textContent,
         quantity: 1,
@@ -117,8 +116,7 @@ const showModals = () => {
         templateModal.querySelector('h4').textContent = productModal.title;
         templateModal.querySelector('#currencyModal').textContent = productModal.currency;
         templateModal.querySelector('#priceModal').textContent = productModal.price;
-        templateModal.querySelector('img').setAttribute("src", productModal.image);
-        templateModal.querySelector('.imageRemplace').setAttribute("src", '.' + productModal.image);
+        templateModal.querySelector('img').setAttribute("src", `${productModal.image}`);
         templateModal.querySelector('#btnAddToCart').dataset.id = productModal.id;
 
         // buttons add and remove
@@ -150,7 +148,6 @@ const setCart = Object => {
         id: Object.querySelector('#btnAddToCart').dataset.id,
         title: Object.querySelector('h4').textContent,
         image: Object.querySelector('img').attributes[0].nodeValue,
-        image2: Object.querySelector('.imageRemplace').attributes[0].nodeValue,
         price: Object.querySelector('#priceModal').textContent,
         currency: Object.querySelector('#currencyModal').textContent,
         quantity: parseFloat(Object.querySelector('span').textContent),
@@ -187,13 +184,11 @@ const setCart = Object => {
 }
 
 const showCart = () => {
-    // console.log(cart);
     items.innerHTML = '';
     cart.forEach(product => {
         templateCart.querySelector('h6').textContent = product.title,
         templateCart.querySelector('.item-quantity').textContent = product.quantity,
-        templateCart.querySelector('#imgCart').setAttribute("src", product.image2),
-        templateCart.querySelector('#imgCartRemplace').setAttribute("src", product.image),
+        templateCart.querySelector('#imgCart').setAttribute("src", product.image),
         templateCart.querySelector('#cartCurrency').textContent = product.currency,
         templateCart.querySelector('#cartPrice').textContent = (product.price * product.quantity).toFixed(2),
         templateCart.querySelector('#cartSize').textContent = 'Size: ' + product.size,
@@ -257,7 +252,6 @@ const closeModal = () => {
 }
 
 function clickOutside(e){
-    // console.log(e.target.classList.contains('modal'));
     containerModal.addEventListener('click', e => {
         e.target.classList.contains('modal') || e.target.classList.contains('closeModal') ? containerModal.style.display = 'none' : containerModal.style.display = 'flex';
     });
@@ -266,9 +260,14 @@ function clickOutside(e){
 
 // Cart Open Start
 const containerBag = document.querySelector('#cartContainer');
+containerBag.style.display = 'none';
 
 const openBag = () => {
-    containerBag.style.display = 'flex';
+    if(containerBag.style.display === 'none') {
+        containerBag.style.display = 'flex';
+    } else {
+        containerBag.style.display = 'none';
+    }
 }
 
 const closeBag = () => {
@@ -303,7 +302,6 @@ const btnAction = e => {
 const btnRemove = e => {
     // Delete
     if(e.target.classList.contains('remove') || e.target.classList.contains('delete')) {
-        // console.log(e.target.dataset.id);
         const valueId = e.target.dataset.id;
         let separateId = valueId.split(',');
         if(cart.find(el => el.id == separateId[0] && el.size == separateId[1])) {
@@ -317,7 +315,6 @@ const btnRemove = e => {
 }
 
 const quantityModal = e => {
-    // console.log(e.target.dataset.id);
     if (e.target.dataset.id != undefined) {
         const containerModalId = modalVariation.find(el => el.id == e.target.dataset.id);
         let containerModalQuantity = containerModalId.quantity;

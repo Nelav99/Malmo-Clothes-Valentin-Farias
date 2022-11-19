@@ -96,7 +96,7 @@ const showCart = () => {
     cart.forEach(product => {
         templateCart.querySelector('h6').textContent = product.title,
         templateCart.querySelector('.item-quantity').textContent = product.quantity,
-        templateCart.querySelector('.principalProduct').setAttribute("src", '.' + product.image),
+        templateCart.querySelector('.principalProduct').setAttribute("src", product.image),
         templateCart.querySelector('#cartCurrency').textContent = product.currency,
         templateCart.querySelector('#cartPrice').textContent = (product.price * product.quantity).toFixed(2),
         templateCart.querySelector('#cartSize').textContent = 'Size: ' + product.size,
@@ -132,9 +132,14 @@ showCart();
 
 // Cart Open Start
 const containerBag = document.querySelector('#cartContainer');
+containerBag.style.display = 'none';
 
 const openBag = () => {
-    containerBag.style.display = 'flex';
+    if(containerBag.style.display === 'none') {
+        containerBag.style.display = 'flex';
+    } else {
+        containerBag.style.display = 'none';
+    }
 }
 
 const closeBag = () => {

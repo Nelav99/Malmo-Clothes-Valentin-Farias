@@ -4,30 +4,44 @@ const fragment = document.createDocumentFragment();
 let numberOfProducts = document.querySelector('#numberOfProducts');
 const data = JSON.parse(localStorage.getItem('cart'));
 
-const cart = [...data];
+const cart = []
+if(data != null) {
+    cart.push(...data);
+}
 
 const showNumberOfProducts = () =>{ numberOfProducts.innerText = cart.length;}
 
 const showProductsToPay = () => {
-    productRow.innerHTML = '';
-    cart.forEach(product => {
-        templatePay.querySelector('#imgCart').setAttribute("src", product.image2),
-        templatePay.querySelector('#nameProductToPay').textContent = product.title,
-        templatePay.querySelector('#sizeProductToPay').textContent = product.size,
-        templatePay.querySelector('#priceProductToPay').textContent = product.currency + product.price,
-        templatePay.querySelector('.item-quantity').textContent = product.quantity,
-        templatePay.querySelector('#subtotalProductToPay').textContent = product.currency + (product.quantity * product.price).toFixed(2),
+    if ( cart.length != 0) {
+        productRow.innerHTML = '';
+        cart.forEach(product => {
+            templatePay.querySelector('#imgCart').setAttribute("src", product.image),
+            templatePay.querySelector('#nameProductToPay').textContent = product.title,
+            templatePay.querySelector('#sizeProductToPay').textContent = product.size,
+            templatePay.querySelector('#priceProductToPay').textContent = product.currency + product.price,
+            templatePay.querySelector('.item-quantity').textContent = product.quantity,
+            templatePay.querySelector('#subtotalProductToPay').textContent = product.currency + (product.quantity * product.price).toFixed(2),
 
-        // buttons add and remove
-        templatePay.querySelector('.subtractQuantity').dataset.id = product.id + ',' + product.size,
-        templatePay.querySelector('.addQuantity').dataset.id = product.id + ',' + product.size,
-        templatePay.querySelector('.remove').dataset.id = product.id + ',' + product.size,
-        templatePay.querySelector('.delete').dataset.id = product.id + ',' + product.size
+            // buttons add and remove
+            templatePay.querySelector('.subtractQuantity').dataset.id = product.id + ',' + product.size,
+            templatePay.querySelector('.addQuantity').dataset.id = product.id + ',' + product.size,
+            templatePay.querySelector('.remove').dataset.id = product.id + ',' + product.size,
+            templatePay.querySelector('.delete').dataset.id = product.id + ',' + product.size
 
-        const clone = templatePay.cloneNode(true);
-        fragment.appendChild(clone);
-    });
-    productRow.appendChild(fragment);
+            const clone = templatePay.cloneNode(true);
+            fragment.appendChild(clone);
+        });
+        productRow.appendChild(fragment);
+    } else {
+        const answer = document.createElement('tr');
+        answer.classList.add('cartEmpty');
+        answer.innerHTML = `
+            <div id="empty">
+                <span class="yourEmpty">Your cart is empty</span>
+            </div>
+        `
+        productRow.appendChild(answer);
+    }
 
     showNumberOfProducts();
 
@@ -88,12 +102,10 @@ const btnAction = e => {
 const showTotalPrice = () => {
     let multiplicationPriceQuantity = cart.map( el => (el.price * el.quantity));
     let subtotal = (multiplicationPriceQuantity.reduce((acc, el) => acc + el, 0));
-    document.querySelector('.subtotalPay').innerText = '$' + (subtotal).toFixed(2);
-
     let taxes = ((subtotal * 1.21) - subtotal);
-    document.querySelector('.taxesPay').innerText = '$' + (taxes).toFixed(2);
-
     let total = subtotal + taxes;
+    document.querySelector('.subtotalPay').innerText = '$' + (subtotal).toFixed(2);
+    document.querySelector('.taxesPay').innerText = '$' + (taxes).toFixed(2);
     document.querySelector('.totalPay').innerText = '$' + (total).toFixed(2);
 }
 
@@ -103,11 +115,16 @@ showTotalPrice();
 const btnReadyToPay = document.querySelector('.buyButton');
 
 btnReadyToPay.addEventListener('click', () => {
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Congratulations!',
-        text: 'Your shipment is on its way. It will arrive in the next 24 hours',
-        showConfirmButton: true
-    })
+    if(cart.length != 0) {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Congratulations!',
+            text: 'Your shipment is on its way. It will arrive in the next 24 hours',
+            showConfirmButton: false,
+            timer: 3500,
+        })
+        localStorage.clear();
+        setInterval("location.reload()", 3500);
+    }
 })
